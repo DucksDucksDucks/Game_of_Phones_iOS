@@ -14,6 +14,7 @@
 		51502D901DF528E9001C845A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51502D8E1DF528E9001C845A /* LaunchScreen.storyboard */; };
 		51502D981DF5290D001C845A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51502D971DF5290D001C845A /* SecondViewController.swift */; };
 		51502D9A1DF52D0E001C845A /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51502D991DF52D0E001C845A /* ThirdViewController.swift */; };
+		B6F0D2E11DFA118A00F01E40 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2E01DFA118A00F01E40 /* FourthViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		51502D911DF528E9001C845A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51502D971DF5290D001C845A /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		51502D991DF52D0E001C845A /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		B6F0D2E01DFA118A00F01E40 /* FourthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				51502D851DF528E9001C845A /* AppDelegate.swift */,
 				51502D871DF528E9001C845A /* ViewController.swift */,
 				51502D891DF528E9001C845A /* Main.storyboard */,
+				B6F0D2E01DFA118A00F01E40 /* FourthViewController.swift */,
 				51502D991DF52D0E001C845A /* ThirdViewController.swift */,
 				51502D971DF5290D001C845A /* SecondViewController.swift */,
 				51502D8C1DF528E9001C845A /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 				51502D881DF528E9001C845A /* ViewController.swift in Sources */,
 				51502D9A1DF52D0E001C845A /* ThirdViewController.swift in Sources */,
 				51502D861DF528E9001C845A /* AppDelegate.swift in Sources */,
+				B6F0D2E11DFA118A00F01E40 /* FourthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +312,7 @@
 				51502D961DF528E9001C845A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
