@@ -1,22 +1,19 @@
 //
-//  ThirdViewController.swift
+//  FourthViewController.swift
 //  Game Of Phones
 //
-//  Created by Josh Harrold on 12/4/16.
+//  Created by Joshua Harrold on 12/8/16.
 //  Copyright © 2016 Josh Harrold. All rights reserved.
 //
 
 import UIKit
 
-class ThirdViewController: UIViewController {
+class FourthViewController: UIViewController {
 
-    @IBOutlet weak var scroll: UIScrollView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
     }
 
     override func didReceiveMemoryWarning() {
