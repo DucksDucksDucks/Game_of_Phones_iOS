@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -93,7 +93,7 @@
                                 <connections>
                                     <action selector="submitButton:" destination="KaQ-cT-CSF" eventType="touchUpInside" id="Xcp-E9-6UN"/>
                                     <action selector="submitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i5Y-1v-W74"/>
-                                    <segue destination="ePL-9G-Vtl" kind="show" id="F2u-Fe-92o"/>
+                                    <segue destination="ePL-9G-Vtl" kind="show" identifier="displayQuestion" id="F2u-Fe-92o"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -117,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAO-RG-7Cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.782608695652179" y="33.423913043478265"/>
+            <point key="canvasLocation" x="23" y="36"/>
         </scene>
         <!--Third View Controller-->
         <scene sceneID="wEV-LH-jMb">
@@ -191,8 +191,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is the slop of the line 3y + 6x -12?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bSJ-45-axv">
-                                <rect key="frame" x="18" y="28" width="378" height="57.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bSJ-45-axv">
+                                <rect key="frame" x="20" y="69" width="378" height="28.666666666666661"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -205,6 +205,9 @@
                             <constraint firstItem="bSJ-45-axv" firstAttribute="leading" secondItem="3sN-9A-CmX" secondAttribute="leading" constant="18" id="v49-LP-C34"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="question" destination="bSJ-45-axv" id="oXi-Re-aCU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZON-9j-jFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,9 +12,16 @@ class ThirdViewController: UIViewController {
 
     @IBOutlet weak var scroll: UIScrollView!
     
+    @IBOutlet weak var question: UILabel!
+    
+    var questionText: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        question.text = questionText
+        
+            activityIndicator.stopAnimating()
         // Do any additional setup after loading the view.
         
     }
