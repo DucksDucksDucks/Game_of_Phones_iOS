@@ -16,6 +16,9 @@ class ThirdViewController: UIViewController {
     
     var questionText: String = ""
     
+    
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
