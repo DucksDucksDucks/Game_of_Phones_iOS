@@ -148,21 +148,21 @@ class SecondViewController: UIViewController {
             let responseString = String(data: data, encoding: .utf8)
             print("responseString = \(responseString)")
             
-            self.getQuestionAnswers(data: data)
+            //self.getQuestionAnswers(data: data)
             
         }
         task.resume()
     }
     
-    func getQuestionAnswers(data:Data){
-        do {
-            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
-            if let questionAnswers = json["question_answers"] as? [[String:AnyObject]]{
-                for answers in questionAnswers{
-                    var numOfQuestions = 0
-                    questionAnswerDict["QuestionID, \(numOfQuestions)"] = questionAnswers[0]["q_id"] as! String
-                }
-                print(questionAnswerDict["QuestionID 3"]!)
+    //func getQuestionAnswers(data:Data){
+        //do {
+            //let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+            //if let questionAnswers = json["question_answers"] as? [[String:AnyObject]]{
+                //for answers in questionAnswers{
+                    //var numOfQuestions = 0
+                    //questionAnswerDict["QuestionID, \(numOfQuestions)"] = questionAnswers[0]["q_id"] as! String
+                //}
+                //print(questionAnswerDict["QuestionID 3"]!)
                 //for answers in questionAnswers{
                     //let questionId = questionAnswers[0]["q_id"] as! String
                     //questionAnswerDict["questionID"] = questionId
@@ -174,14 +174,14 @@ class SecondViewController: UIViewController {
                 //let questionPicture = questionInfo[0]["p_filename"] as! String
                 
                 //questionInfoDict["Question"] = questionText
-                performSegue(withIdentifier: "displayQuestion", sender: questionInfoDict["Question"])
-            }
-        }
-        catch let error as NSError {
-            print(error)
-        }
+                //performSegue(withIdentifier: "displayQuestion", sender: questionInfoDict["Question"])
+            //}
+        //}
+        //catch let error as NSError {
+            //print(error)
+        //}
 
-    }
+    //}
 
     override func viewDidLoad() {
         super.viewDidLoad()
