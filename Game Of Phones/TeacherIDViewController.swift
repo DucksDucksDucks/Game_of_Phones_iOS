@@ -10,7 +10,9 @@ import UIKit
 
 var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
 
+
 class TeacherIDViewController: UIViewController {
+    
     
     
     var questionInfoDict = [String:String]()
@@ -54,6 +56,8 @@ class TeacherIDViewController: UIViewController {
             print("responseString = \(responseString)")
             
             self.postDeviceId(data: data)
+            
+            print("deviceID = \(DeviceId.deviceIdForAnswer)")
 
         }
         task.resume()

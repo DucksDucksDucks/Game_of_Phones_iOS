@@ -38,10 +38,26 @@ class NicknameViewController: UIViewController {
             let responseString = String(data: data, encoding: .utf8)
             print("responseString = \(responseString)")
             
+            self.getDeviceId(data: data)
+            
         }
         task.resume()
         
     }
+    
+    func getDeviceId(data: Data){
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+            if let deviceIdArray = json["deviceID"] as? [[String:AnyObject]]{
+                DeviceId.deviceIdForAnswer = deviceIdArray[0]["device_id"] as! String
+                print(DeviceId.deviceIdForAnswer)
+            }
+        }
+        catch let error as NSError {
+            print(error)
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
