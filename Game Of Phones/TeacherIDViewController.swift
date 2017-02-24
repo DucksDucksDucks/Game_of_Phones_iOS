@@ -10,11 +10,12 @@ import UIKit
 
 var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
 
-class SecondViewController: UIViewController {
+class TeacherIDViewController: UIViewController {
     
     
     var questionInfoDict = [String:String]()
     var questionAnswerDict = [String:String]()
+    var questionAnswersArray = [[String:AnyObject]]()
 
     @IBOutlet weak var teacherId: UITextField!
     
@@ -100,14 +101,13 @@ class SecondViewController: UIViewController {
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
             if let questionInfo = json["question_info"] as? [[String:AnyObject]]{
-                //let questionId = questionInfo[0]["q_id"] as! String
+
                 let questionText = questionInfo[0]["q_text"] as? String
-                //let questionType = questionInfo[0]["q_type"] as! String
-                //let questionCorrectId = questionInfo[0]["q_correct_id"] as! String
-                //let questionPicture = questionInfo[0]["p_filename"] as! String
-                
                 questionInfoDict["Question"] = questionText
-                performSegue(withIdentifier: "displayQuestion", sender: questionInfoDict["Question"])
+                
+                if questionInfo[0]["p_filename"] != nil{
+                    //questionInfoDict["Question Image"] = questionInfo[0]["p_filename"] as! String?
+                }
             }
         }
         catch let error as NSError {
@@ -148,40 +148,28 @@ class SecondViewController: UIViewController {
             let responseString = String(data: data, encoding: .utf8)
             print("responseString = \(responseString)")
             
-            //self.getQuestionAnswers(data: data)
+            self.getQuestionAnswers(data: data)
             
         }
         task.resume()
     }
     
-    //func getQuestionAnswers(data:Data){
-        //do {
-            //let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
-            //if let questionAnswers = json["question_answers"] as? [[String:AnyObject]]{
-                //for answers in questionAnswers{
-                    //var numOfQuestions = 0
-                    //questionAnswerDict["QuestionID, \(numOfQuestions)"] = questionAnswers[0]["q_id"] as! String
-                //}
-                //print(questionAnswerDict["QuestionID 3"]!)
-                //for answers in questionAnswers{
-                    //let questionId = questionAnswers[0]["q_id"] as! String
-                    //questionAnswerDict["questionID"] = questionId
-                //}
-                //let questionId = questionInfo[0]["q_id"] as! String
-                //let questionText = questionInfo[0]["q_text"] as? String
-                //let questionType = questionInfo[0]["q_type"] as! String
-                //let questionCorrectId = questionInfo[0]["q_correct_id"] as! String
-                //let questionPicture = questionInfo[0]["p_filename"] as! String
-                
-                //questionInfoDict["Question"] = questionText
-                //performSegue(withIdentifier: "displayQuestion", sender: questionInfoDict["Question"])
-            //}
-        //}
-        //catch let error as NSError {
-            //print(error)
-        //}
+    func getQuestionAnswers(data:Data){
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+            if let questionAnswers = json["question_answers"] as? [[String:AnyObject]]{
+                questionAnswersArray = questionAnswers
+                OperationQueue.main.addOperation {
+                    self.performSegue(withIdentifier: "displayQuestion", sender: self.questionAnswersArray)
+                }
 
-    //}
+            }
+        }
+        catch let error as NSError {
+            print(error)
+        }
+
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -195,10 +183,12 @@ class SecondViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destViewController : ThirdViewController = segue.destination as? ThirdViewController{
-            if (sender as? String) != nil {
+        if let destViewController : QuestionViewController = segue.destination as? QuestionViewController{
+            //if (sender as? String) != nil {
                 destViewController.questionText = questionInfoDict["Question"]!
-            }
+                //destViewController.questionImageName = questionInfoDict["Question Image"]!
+                destViewController.questionAnswers = questionAnswersArray
+            //}
         }
     }
 

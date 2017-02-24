@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class NicknameViewController: UIViewController {
 
     @IBOutlet weak var nameField: UITextField!
     
