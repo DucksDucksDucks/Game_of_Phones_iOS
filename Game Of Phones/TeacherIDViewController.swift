@@ -109,6 +109,9 @@ class TeacherIDViewController: UIViewController {
                 let questionText = questionInfo[0]["q_text"] as? String
                 questionInfoDict["Question"] = questionText
                 
+                let questionType = questionInfo[0]["q_type"] as? String
+                questionInfoDict["Type"] = questionType
+                
                 if questionInfo[0]["p_filename"] != nil{
                     //questionInfoDict["Question Image"] = questionInfo[0]["p_filename"] as! String?
                 }
@@ -163,8 +166,14 @@ class TeacherIDViewController: UIViewController {
             let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
             if let questionAnswers = json["question_answers"] as? [[String:AnyObject]]{
                 questionAnswersArray = questionAnswers
-                OperationQueue.main.addOperation {
-                    self.performSegue(withIdentifier: "displayQuestion", sender: self.questionAnswersArray)
+                if(questionInfoDict["Type"] == "mult"){
+                    OperationQueue.main.addOperation {
+                        self.performSegue(withIdentifier: "displayQuestion", sender: self.questionAnswersArray)
+                    }
+                } else {
+                    OperationQueue.main.addOperation {
+                        self.performSegue(withIdentifier: "displayTextQuestion", sender: self.questionAnswersArray)
+                    }
                 }
 
             }

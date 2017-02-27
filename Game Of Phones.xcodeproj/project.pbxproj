@@ -11,12 +11,12 @@
 		51502D881DF528E9001C845A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51502D871DF528E9001C845A /* NicknameViewController.swift */; };
 		51502D8B1DF528E9001C845A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51502D891DF528E9001C845A /* Main.storyboard */; };
 		51502D8D1DF528E9001C845A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51502D8C1DF528E9001C845A /* Assets.xcassets */; };
-		51502D901DF528E9001C845A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51502D8E1DF528E9001C845A /* LaunchScreen.storyboard */; };
 		51502D981DF5290D001C845A /* TeacherIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51502D971DF5290D001C845A /* TeacherIDViewController.swift */; };
 		51502D9A1DF52D0E001C845A /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51502D991DF52D0E001C845A /* QuestionViewController.swift */; };
 		51F57C531E5E330F006E138B /* DLRadioButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51F57C501E5E2ED5006E138B /* DLRadioButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51F76A541E5DF73F00DA7A7A /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */; };
 		B601B2571E608CE2001F5B90 /* DeviceId.swift in Sources */ = {isa = PBXBuildFile; fileRef = B601B2561E608CE2001F5B90 /* DeviceId.swift */; };
+		B65279461E647E730075FDC2 /* TextQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65279451E647E730075FDC2 /* TextQuestionViewController.swift */; };
 		B6F0D2E11DFA118A00F01E40 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2E01DFA118A00F01E40 /* FourthViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +40,6 @@
 		51502D871DF528E9001C845A /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		51502D8A1DF528E9001C845A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		51502D8C1DF528E9001C845A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		51502D8F1DF528E9001C845A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51502D911DF528E9001C845A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51502D971DF5290D001C845A /* TeacherIDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherIDViewController.swift; sourceTree = "<group>"; };
 		51502D991DF52D0E001C845A /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 		51F76A521E5DF73F00DA7A7A /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		B601B2561E608CE2001F5B90 /* DeviceId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceId.swift; sourceTree = "<group>"; };
+		B65279451E647E730075FDC2 /* TextQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextQuestionViewController.swift; sourceTree = "<group>"; };
 		B6F0D2E01DFA118A00F01E40 /* FourthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,14 +84,14 @@
 			children = (
 				51F76A521E5DF73F00DA7A7A /* DLRadioButton.h */,
 				51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */,
+				51502D891DF528E9001C845A /* Main.storyboard */,
 				51502D851DF528E9001C845A /* AppDelegate.swift */,
 				51502D871DF528E9001C845A /* NicknameViewController.swift */,
-				51502D891DF528E9001C845A /* Main.storyboard */,
-				B6F0D2E01DFA118A00F01E40 /* FourthViewController.swift */,
-				51502D991DF52D0E001C845A /* QuestionViewController.swift */,
 				51502D971DF5290D001C845A /* TeacherIDViewController.swift */,
+				51502D991DF52D0E001C845A /* QuestionViewController.swift */,
+				B65279451E647E730075FDC2 /* TextQuestionViewController.swift */,
+				B6F0D2E01DFA118A00F01E40 /* FourthViewController.swift */,
 				51502D8C1DF528E9001C845A /* Assets.xcassets */,
-				51502D8E1DF528E9001C845A /* LaunchScreen.storyboard */,
 				51502D911DF528E9001C845A /* Info.plist */,
 				B601B2561E608CE2001F5B90 /* DeviceId.swift */,
 			);
@@ -168,7 +168,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51502D901DF528E9001C845A /* LaunchScreen.storyboard in Resources */,
 				51502D8D1DF528E9001C845A /* Assets.xcassets in Resources */,
 				51502D8B1DF528E9001C845A /* Main.storyboard in Resources */,
 			);
@@ -187,6 +186,7 @@
 				51502D9A1DF52D0E001C845A /* QuestionViewController.swift in Sources */,
 				B601B2571E608CE2001F5B90 /* DeviceId.swift in Sources */,
 				51502D861DF528E9001C845A /* AppDelegate.swift in Sources */,
+				B65279461E647E730075FDC2 /* TextQuestionViewController.swift in Sources */,
 				B6F0D2E11DFA118A00F01E40 /* FourthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,14 +200,6 @@
 				51502D8A1DF528E9001C845A /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		51502D8E1DF528E9001C845A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				51502D8F1DF528E9001C845A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

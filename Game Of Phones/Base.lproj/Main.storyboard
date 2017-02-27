@@ -119,11 +119,39 @@
                     <connections>
                         <outlet property="teacherId" destination="QpB-rL-7qG" id="Zb1-27-4r6"/>
                         <segue destination="ePL-9G-Vtl" kind="show" identifier="displayQuestion" id="mbS-QM-v3r"/>
+                        <segue destination="0MZ-2R-BOr" kind="show" identifier="displayTextQuestion" id="VBY-xZ-e61"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAO-RG-7Cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="23" y="36"/>
+        </scene>
+        <!--Text Question View Controller-->
+        <scene sceneID="xm0-1d-fyz">
+            <objects>
+                <viewController id="0MZ-2R-BOr" customClass="TextQuestionViewController" customModule="Game_Of_Phones" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eKl-GA-qAh"/>
+                        <viewControllerLayoutGuide type="bottom" id="fk8-Fs-GYv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zw8-jk-aLv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjI-uO-LNi">
+                                <rect key="frame" x="20" y="28" width="374" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hw7-eL-fbN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.739130434782609" y="704.34782608695662"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="wEV-LH-jMb">

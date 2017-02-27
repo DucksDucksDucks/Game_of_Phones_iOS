@@ -1,20 +1,18 @@
 //
-//  FourthViewController.swift
+//  TextQuestionViewController.swift
 //  Game Of Phones
 //
-//  Created by Joshua Harrold on 12/8/16.
-//  Copyright © 2016 Josh Harrold. All rights reserved.
+//  Created by Joshua Harrold on 2/27/17.
+//  Copyright © 2017 Josh Harrold. All rights reserved.
 //
 
 import UIKit
 
-class FourthViewController: UIViewController {
+class TextQuestionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hello")
-
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
