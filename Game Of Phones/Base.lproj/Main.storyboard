@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -138,20 +138,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjI-uO-LNi">
-                                <rect key="frame" x="20" y="28" width="374" height="99"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjI-uO-LNi">
+                                <rect key="frame" x="20" y="53" width="374" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.7541542649269104" green="0.75076037645339966" blue="0.75067871809005737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please type your answer..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a86-T7-jeB">
+                                <rect key="frame" x="20" y="103" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6J3-gr-aaC">
+                                <rect key="frame" x="20" y="141" width="374" height="30"/>
+                                <color key="backgroundColor" red="0.99890905618667603" green="0.73322957754135132" blue="0.20060750842094421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="0.13606336712837219" green="0.10050175338983536" blue="0.030951457098126411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="answerSubmit:" destination="0MZ-2R-BOr" eventType="touchUpInside" id="gAd-T1-0Jt"/>
+                                    <segue destination="Kw2-2m-BN0" kind="show" id="loG-sk-4x7"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.19315150380134583" green="0.18808582425117493" blue="0.18797463178634644" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="6J3-gr-aaC" secondAttribute="trailing" id="2Ok-gz-bRs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FjI-uO-LNi" secondAttribute="trailing" id="4eV-1W-U2S"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="FjI-uO-LNi" secondAttribute="leading" id="C4p-pA-FsD"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="a86-T7-jeB" secondAttribute="leading" id="FA9-gq-7Ua"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="a86-T7-jeB" secondAttribute="trailing" id="NRQ-Ip-dec"/>
+                            <constraint firstItem="6J3-gr-aaC" firstAttribute="top" secondItem="a86-T7-jeB" secondAttribute="bottom" constant="8" id="Pvv-u9-C3Y"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="6J3-gr-aaC" secondAttribute="leading" id="cOp-2s-oZo"/>
+                            <constraint firstItem="a86-T7-jeB" firstAttribute="top" secondItem="FjI-uO-LNi" secondAttribute="bottom" constant="8" id="kcv-0u-hQ6"/>
+                            <constraint firstItem="FjI-uO-LNi" firstAttribute="top" secondItem="eKl-GA-qAh" secondAttribute="bottom" constant="33" id="oei-hg-QGi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="question" destination="FjI-uO-LNi" id="Oeo-6D-1it"/>
+                        <outlet property="textAnswer" destination="a86-T7-jeB" id="lhm-rk-i3o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hw7-eL-fbN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="21.739130434782609" y="704.34782608695662"/>
+            <point key="canvasLocation" x="48" y="738"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="wEV-LH-jMb">
@@ -172,20 +203,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifi-3R-Rgf">
-                                <rect key="frame" x="33" y="611" width="349" height="30"/>
+                                <rect key="frame" x="33" y="480" width="349" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.68235294117647061" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.098039215686274508" green="0.074509803921568626" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Kw2-2m-BN0" kind="show" id="iBU-lq-ysI"/>
+                                    <action selector="submitAnswer:" destination="ePL-9G-Vtl" eventType="touchUpInside" id="A1V-te-ZDw"/>
+                                    <segue destination="Kw2-2m-BN0" kind="show" id="hoJ-nS-Hx6"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.14509803921568629" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="bSJ-45-axv" firstAttribute="top" secondItem="idc-tE-pPW" secondAttribute="bottom" constant="41" id="6IP-3E-xaC"/>
-                            <constraint firstItem="QDW-ta-57P" firstAttribute="top" secondItem="Ifi-3R-Rgf" secondAttribute="bottom" constant="95" id="JdV-L0-qUf"/>
+                            <constraint firstItem="QDW-ta-57P" firstAttribute="top" secondItem="Ifi-3R-Rgf" secondAttribute="bottom" constant="226" id="MAt-Qe-FBk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ifi-3R-Rgf" secondAttribute="trailing" constant="12" id="Y3m-oR-mDr"/>
                             <constraint firstItem="bSJ-45-axv" firstAttribute="centerX" secondItem="3sN-9A-CmX" secondAttribute="centerX" id="cfq-bf-G6Y"/>
                             <constraint firstItem="Ifi-3R-Rgf" firstAttribute="leading" secondItem="3sN-9A-CmX" secondAttribute="leadingMargin" constant="13" id="md9-8T-qVc"/>
@@ -211,18 +243,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer submitted successfully" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8w3-2p-Z6f">
-                                <rect key="frame" x="92" y="226" width="230" height="57.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" red="1" green="0.68235294117647061" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Successfully submitted answer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zh-Dg-fh2">
+                                <rect key="frame" x="20" y="28" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.75415426490000004" green="0.75076037650000005" blue="0.75067871809999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uW-Uy-V6h">
+                                <rect key="frame" x="20" y="66" width="374" height="30"/>
+                                <color key="backgroundColor" red="0.99890905618667603" green="0.73322957754135132" blue="0.20060750842094421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Check If Answer Is Displayed">
+                                    <color key="titleColor" red="0.1305503249168396" green="0.0946212038397789" blue="0.024972941726446152" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3c-Hb-mW4">
+                                <rect key="frame" x="20" y="122" width="374" height="30"/>
+                                <color key="backgroundColor" red="0.99890905620000003" green="0.73322957749999995" blue="0.2006075084" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Answer A New Question">
+                                    <color key="titleColor" red="0.13055032489999999" green="0.094621203840000001" blue="0.02497294173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.14509803921568629" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="8w3-2p-Z6f" secondAttribute="trailing" constant="72" id="IuG-3F-nom"/>
-                            <constraint firstItem="8w3-2p-Z6f" firstAttribute="top" secondItem="zl4-1p-RdP" secondAttribute="bottom" constant="206" id="Tg4-h1-n8t"/>
-                            <constraint firstItem="8w3-2p-Z6f" firstAttribute="leading" secondItem="SLc-qJ-xBR" secondAttribute="leadingMargin" constant="72" id="pGx-Hr-9z2"/>
+                            <constraint firstItem="8zh-Dg-fh2" firstAttribute="top" secondItem="zl4-1p-RdP" secondAttribute="bottom" constant="8" id="8ed-zv-J5L"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="8zh-Dg-fh2" secondAttribute="leading" id="Hoo-G8-BIO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1uW-Uy-V6h" secondAttribute="trailing" id="RcW-t0-MFB"/>
+                            <constraint firstItem="G3c-Hb-mW4" firstAttribute="top" secondItem="1uW-Uy-V6h" secondAttribute="bottom" constant="26" id="Rog-f9-Kpe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="G3c-Hb-mW4" secondAttribute="trailing" id="UpG-Ia-Cg0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8zh-Dg-fh2" secondAttribute="trailing" id="h76-5i-Ci5"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="1uW-Uy-V6h" secondAttribute="leading" id="rNr-ab-HcW"/>
+                            <constraint firstItem="1uW-Uy-V6h" firstAttribute="top" secondItem="8zh-Dg-fh2" secondAttribute="bottom" constant="17" id="rhA-Ni-bkD"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="G3c-Hb-mW4" secondAttribute="leading" id="y8O-g4-mFB"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -231,4 +283,7 @@
             <point key="canvasLocation" x="1304.3478260869567" y="35.869565217391305"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hoJ-nS-Hx6"/>
+    </inferredMetricsTieBreakers>
 </document>

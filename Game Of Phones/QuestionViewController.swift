@@ -14,14 +14,49 @@ class QuestionViewController: UIViewController {
     
     @IBOutlet weak var question: UILabel!
     
-    var questionText: String = ""
-    
     var questionAnswers = [[String:AnyObject]]()
-
+    var selectedAnswer = [String:String]()
+    var questionText: String = ""
+    var answerId = ""
+    var questionId = ""
+        var deviceId = ""
+    
+    @IBAction func submitAnswer(_ sender: UIButton) {
+        for _ in questionAnswers{
+            if(selectedAnswer["Answer"] == questionAnswers[0]["a_text"] as? String){
+                answerId = questionAnswers[0]["a_id"] as! String
+            }
+        }
+        let bodyData = "answer=" + (answerId) + "&deviceID=" + (deviceId) + "&currentQID=" + (questionId)
+        
+        var request = URLRequest(url: URL(string: "http://mcs.drury.edu/amerritt/sendAnswer.php")!)
+        request.httpMethod = "POST"
+        //request.httpBody = postString.data(using: .utf8)
+        request.httpBody = bodyData.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+            
+        }
+        task.resume()
+    }
+    
     let swiftColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1)
     let radioIndicatorColor = UIColor(red:1, green: 174/255, blue: 40/255, alpha: 1)
     
-    private func createRadioButton(frame : CGRect, title : String, color : UIColor) -> DLRadioButton {
+    private func createRadioButton(frame : CGRect, title : String, id : String, color : UIColor) -> DLRadioButton {
+        
         let radioButton = DLRadioButton(frame: frame);
         radioButton.titleLabel!.font = UIFont.systemFont(ofSize: 14);
         radioButton.setTitle(title, for: UIControlState.normal);
@@ -31,18 +66,12 @@ class QuestionViewController: UIViewController {
         radioButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left;
         radioButton.addTarget(self, action: #selector(QuestionViewController.logSelectedButton), for: UIControlEvents.touchUpInside);
         self.view.addSubview(radioButton);
-        
         return radioButton;
     }
 
     @objc @IBAction private func logSelectedButton(radioButton : DLRadioButton) {
-        if (radioButton.isMultipleSelectionEnabled) {
-            for button in radioButton.selectedButtons() {
-                print(String(format: "%@ is selected.\n", button.titleLabel!.text!));
-            }
-        } else {
-            print(String(format: "%@ is selected.\n", radioButton.selected()!.titleLabel!.text!));
-        }
+            selectedAnswer["Answer"] = radioButton.selected()!.titleLabel!.text!
+            print(selectedAnswer["Answer"]!);
     }
     
     override func viewDidLoad() {
@@ -53,7 +82,7 @@ class QuestionViewController: UIViewController {
         // programmatically add buttons
         // first button
         let frame = CGRect(x: 25, y: 100, width: 100, height: 100);
-        let firstRadioButton = createRadioButton(frame: frame, title: questionAnswers[0]["a_text"] as! String, color: swiftColor);
+        let firstRadioButton = createRadioButton(frame: frame, title: questionAnswers[0]["a_text"] as! String, id : questionAnswers[0]["a_id"] as! String, color: swiftColor);
         if(questionAnswers[0]["p_filename"] as? String != nil){
             var imageView: UIImageView
             imageView = UIImageView(frame:CGRect(x:50, y:165, width:50, height:50))
@@ -73,7 +102,7 @@ class QuestionViewController: UIViewController {
             }
             else{
                 let frame = CGRect(x: 25, y: y, width: 100, height: 100);
-                let radioButton = createRadioButton(frame: frame, title: questionAnswers[i]["a_text"] as! String, color: swiftColor);
+                let radioButton = createRadioButton(frame: frame, title: questionAnswers[i]["a_text"] as! String, id: questionAnswers[i]["a_id"] as! String, color: swiftColor);
                 if(questionAnswers[i]["p_filename"] as? String != nil){
                     var imageView: UIImageView
                     imageView = UIImageView(frame:CGRect(x:100, y:100, width:100, height:100))

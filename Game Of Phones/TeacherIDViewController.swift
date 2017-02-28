@@ -56,8 +56,6 @@ class TeacherIDViewController: UIViewController {
             print("responseString = \(responseString)")
             
             self.postDeviceId(data: data)
-            
-            print("deviceID = \(DeviceId.deviceIdForAnswer)")
 
         }
         task.resume()
@@ -108,6 +106,9 @@ class TeacherIDViewController: UIViewController {
 
                 let questionText = questionInfo[0]["q_text"] as? String
                 questionInfoDict["Question"] = questionText
+                
+                let questionId = questionInfo[0]["q_id"] as? String
+                questionInfoDict["Question Id"] = questionId
                 
                 let questionType = questionInfo[0]["q_type"] as? String
                 questionInfoDict["Type"] = questionType
@@ -166,16 +167,15 @@ class TeacherIDViewController: UIViewController {
             let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
             if let questionAnswers = json["question_answers"] as? [[String:AnyObject]]{
                 questionAnswersArray = questionAnswers
-                if(questionInfoDict["Type"] == "mult"){
-                    OperationQueue.main.addOperation {
-                        self.performSegue(withIdentifier: "displayQuestion", sender: self.questionAnswersArray)
-                    }
-                } else {
+                if(questionInfoDict["Type"] == "sa"){
                     OperationQueue.main.addOperation {
                         self.performSegue(withIdentifier: "displayTextQuestion", sender: self.questionAnswersArray)
                     }
+                } else {
+                    OperationQueue.main.addOperation {
+                        self.performSegue(withIdentifier: "displayQuestion", sender: self.questionAnswersArray)
+                    }
                 }
-
             }
         }
         catch let error as NSError {
@@ -186,33 +186,25 @@ class TeacherIDViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destViewController : QuestionViewController = segue.destination as? QuestionViewController{
             //if (sender as? String) != nil {
                 destViewController.questionText = questionInfoDict["Question"]!
-                //destViewController.questionImageName = questionInfoDict["Question Image"]!
                 destViewController.questionAnswers = questionAnswersArray
+                destViewController.deviceId = DeviceId.deviceIdForAnswer
+                destViewController.questionId = questionInfoDict["Question Id"]!
             //}
+        } else if let destViewController : TextQuestionViewController = segue.destination as? TextQuestionViewController{
+            destViewController.questionText = questionInfoDict["Question"]!
+            destViewController.questionId = questionInfoDict["Question Id"]!
+            destViewController.deviceId = DeviceId.deviceIdForAnswer
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
