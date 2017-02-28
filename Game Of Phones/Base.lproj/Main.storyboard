@@ -231,10 +231,10 @@
             </objects>
             <point key="canvasLocation" x="668.11594202898561" y="34.239130434782609"/>
         </scene>
-        <!--Fourth View Controller-->
+        <!--Answer Submitted View Controller-->
         <scene sceneID="r1L-gd-8ui">
             <objects>
-                <viewController id="Kw2-2m-BN0" customClass="FourthViewController" customModule="Game_Of_Phones" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Kw2-2m-BN0" customClass="AnswerSubmittedViewController" customModule="Game_Of_Phones" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zl4-1p-RdP"/>
                         <viewControllerLayoutGuide type="bottom" id="3hp-BT-04F"/>
