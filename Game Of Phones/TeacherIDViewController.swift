@@ -194,16 +194,16 @@ class TeacherIDViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destViewController : QuestionViewController = segue.destination as? QuestionViewController{
-            //if (sender as? String) != nil {
                 destViewController.questionText = questionInfoDict["Question"]!
                 destViewController.questionAnswers = questionAnswersArray
                 destViewController.deviceId = DeviceId.deviceIdForAnswer
                 destViewController.questionId = questionInfoDict["Question Id"]!
-            //}
+                destViewController.teacherId = teacherId.text!
         } else if let destViewController : TextQuestionViewController = segue.destination as? TextQuestionViewController{
             destViewController.questionText = questionInfoDict["Question"]!
             destViewController.questionId = questionInfoDict["Question Id"]!
             destViewController.deviceId = DeviceId.deviceIdForAnswer
+            destViewController.teacherId = teacherId.text!
         }
     }
 

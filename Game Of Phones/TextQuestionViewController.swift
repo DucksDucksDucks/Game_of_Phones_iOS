@@ -16,6 +16,7 @@ class TextQuestionViewController: UIViewController {
     var questionText: String = ""
     var questionId: String = ""
     var deviceId: String = ""
+    var teacherId: String = ""
     
     @IBAction func answerSubmit(_ sender: UIButton) {
         
@@ -40,10 +41,18 @@ class TextQuestionViewController: UIViewController {
             let responseString = String(data: data, encoding: .utf8)
             print("responseString = \(responseString)")
             
+            OperationQueue.main.addOperation {
+                self.performSegue(withIdentifier: "submitAnswer", sender: self.teacherId)
+            }
+            
         }
         task.resume()
-        
-
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destViewController : AnswerSubmittedViewController = segue.destination as? AnswerSubmittedViewController{
+            destViewController.teacherId = teacherId
+        }
     }
     
     override func viewDidLoad() {

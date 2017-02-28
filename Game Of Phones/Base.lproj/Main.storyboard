@@ -158,7 +158,6 @@
                                 </state>
                                 <connections>
                                     <action selector="answerSubmit:" destination="0MZ-2R-BOr" eventType="touchUpInside" id="gAd-T1-0Jt"/>
-                                    <segue destination="Kw2-2m-BN0" kind="show" id="loG-sk-4x7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -178,11 +177,12 @@
                     <connections>
                         <outlet property="question" destination="FjI-uO-LNi" id="Oeo-6D-1it"/>
                         <outlet property="textAnswer" destination="a86-T7-jeB" id="lhm-rk-i3o"/>
+                        <segue destination="Kw2-2m-BN0" kind="show" identifier="submitAnswer" id="NCV-Dr-M7D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hw7-eL-fbN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="738"/>
+            <point key="canvasLocation" x="732" y="360"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="wEV-LH-jMb">
@@ -210,7 +210,6 @@
                                 </state>
                                 <connections>
                                     <action selector="submitAnswer:" destination="ePL-9G-Vtl" eventType="touchUpInside" id="A1V-te-ZDw"/>
-                                    <segue destination="Kw2-2m-BN0" kind="show" id="hoJ-nS-Hx6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -225,11 +224,12 @@
                     </view>
                     <connections>
                         <outlet property="question" destination="bSJ-45-axv" id="oXi-Re-aCU"/>
+                        <segue destination="Kw2-2m-BN0" kind="show" identifier="submitAnswer" id="PaN-lh-gGE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZON-9j-jFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668.11594202898561" y="34.239130434782609"/>
+            <point key="canvasLocation" x="733" y="-293"/>
         </scene>
         <!--Answer Submitted View Controller-->
         <scene sceneID="r1L-gd-8ui">
@@ -262,6 +262,9 @@
                                 <state key="normal" title="Answer A New Question">
                                     <color key="titleColor" red="0.13055032489999999" green="0.094621203840000001" blue="0.02497294173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="newQuestion:" destination="Kw2-2m-BN0" eventType="touchUpInside" id="0pl-cX-icq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.14509803921568629" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -277,13 +280,19 @@
                             <constraint firstAttribute="leadingMargin" secondItem="G3c-Hb-mW4" secondAttribute="leading" id="y8O-g4-mFB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="ePL-9G-Vtl" kind="show" identifier="displayQuestion" id="QfM-jW-OHh"/>
+                        <segue destination="0MZ-2R-BOr" kind="show" identifier="displayTextQuestion" id="1X2-QV-3r8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JzZ-h6-47o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1304.3478260869567" y="35.869565217391305"/>
+            <point key="canvasLocation" x="1419" y="33"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hoJ-nS-Hx6"/>
+        <segue reference="1X2-QV-3r8"/>
+        <segue reference="NCV-Dr-M7D"/>
+        <segue reference="QfM-jW-OHh"/>
     </inferredMetricsTieBreakers>
 </document>

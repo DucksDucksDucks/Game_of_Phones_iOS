@@ -19,7 +19,8 @@ class QuestionViewController: UIViewController {
     var questionText: String = ""
     var answerId = ""
     var questionId = ""
-        var deviceId = ""
+    var deviceId = ""
+    var teacherId = ""
     
     @IBAction func submitAnswer(_ sender: UIButton) {
         for _ in questionAnswers{
@@ -48,6 +49,10 @@ class QuestionViewController: UIViewController {
             let responseString = String(data: data, encoding: .utf8)
             print("responseString = \(responseString)")
             
+            OperationQueue.main.addOperation {
+                self.performSegue(withIdentifier: "submitAnswer", sender: self.teacherId)
+            }
+            
         }
         task.resume()
     }
@@ -72,6 +77,12 @@ class QuestionViewController: UIViewController {
     @objc @IBAction private func logSelectedButton(radioButton : DLRadioButton) {
             selectedAnswer["Answer"] = radioButton.selected()!.titleLabel!.text!
             print(selectedAnswer["Answer"]!);
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destViewController : AnswerSubmittedViewController = segue.destination as? AnswerSubmittedViewController{
+            destViewController.teacherId = teacherId
+        }
     }
     
     override func viewDidLoad() {
