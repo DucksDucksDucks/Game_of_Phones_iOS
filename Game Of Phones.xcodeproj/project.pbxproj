@@ -13,6 +13,10 @@
 		51502D8D1DF528E9001C845A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51502D8C1DF528E9001C845A /* Assets.xcassets */; };
 		51502D981DF5290D001C845A /* TeacherIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51502D971DF5290D001C845A /* TeacherIDViewController.swift */; };
 		51502D9A1DF52D0E001C845A /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51502D991DF52D0E001C845A /* QuestionViewController.swift */; };
+		5186D5FE1E673A3600418F87 /* Nickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186D5FD1E673A3600418F87 /* Nickname.swift */; };
+		5186D6021E674F0700418F87 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186D6011E674F0700418F87 /* Question.swift */; };
+		5186D6041E675AC500418F87 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186D6031E675AC500418F87 /* Teacher.swift */; };
+		5186D6061E67642500418F87 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186D6051E67642500418F87 /* PostData.swift */; };
 		51F57C531E5E330F006E138B /* DLRadioButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51F57C501E5E2ED5006E138B /* DLRadioButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51F76A541E5DF73F00DA7A7A /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */; };
 		B601B2571E608CE2001F5B90 /* DeviceId.swift in Sources */ = {isa = PBXBuildFile; fileRef = B601B2561E608CE2001F5B90 /* DeviceId.swift */; };
@@ -43,6 +47,10 @@
 		51502D911DF528E9001C845A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51502D971DF5290D001C845A /* TeacherIDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherIDViewController.swift; sourceTree = "<group>"; };
 		51502D991DF52D0E001C845A /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		5186D5FD1E673A3600418F87 /* Nickname.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nickname.swift; sourceTree = "<group>"; };
+		5186D6011E674F0700418F87 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		5186D6031E675AC500418F87 /* Teacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
+		5186D6051E67642500418F87 /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		51F57C501E5E2ED5006E138B /* DLRadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DLRadioButton.framework; sourceTree = "<group>"; };
 		51F76A521E5DF73F00DA7A7A /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
@@ -65,6 +73,7 @@
 		51502D791DF528E9001C845A = {
 			isa = PBXGroup;
 			children = (
+				5186D5FA1E6737B700418F87 /* Model */,
 				51502D841DF528E9001C845A /* Game Of Phones */,
 				51502D831DF528E9001C845A /* Products */,
 				B6C4B4381E5DE8B800C4D97E /* Frameworks */,
@@ -96,6 +105,17 @@
 				B601B2561E608CE2001F5B90 /* DeviceId.swift */,
 			);
 			path = "Game Of Phones";
+			sourceTree = "<group>";
+		};
+		5186D5FA1E6737B700418F87 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5186D5FD1E673A3600418F87 /* Nickname.swift */,
+				5186D6011E674F0700418F87 /* Question.swift */,
+				5186D6031E675AC500418F87 /* Teacher.swift */,
+				5186D6051E67642500418F87 /* PostData.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		B6C4B4381E5DE8B800C4D97E /* Frameworks */ = {
@@ -181,13 +201,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				51502D981DF5290D001C845A /* TeacherIDViewController.swift in Sources */,
+				5186D6061E67642500418F87 /* PostData.swift in Sources */,
+				5186D5FE1E673A3600418F87 /* Nickname.swift in Sources */,
 				51F76A541E5DF73F00DA7A7A /* DLRadioButton.m in Sources */,
 				51502D881DF528E9001C845A /* NicknameViewController.swift in Sources */,
 				51502D9A1DF52D0E001C845A /* QuestionViewController.swift in Sources */,
 				B601B2571E608CE2001F5B90 /* DeviceId.swift in Sources */,
 				51502D861DF528E9001C845A /* AppDelegate.swift in Sources */,
 				B65279461E647E730075FDC2 /* TextQuestionViewController.swift in Sources */,
+				5186D6021E674F0700418F87 /* Question.swift in Sources */,
 				B6F0D2E11DFA118A00F01E40 /* AnswerSubmittedViewController.swift in Sources */,
+				5186D6041E675AC500418F87 /* Teacher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -89,6 +89,7 @@ class QuestionViewController: UIViewController {
         super.viewDidLoad()
         
         question.text = questionText
+        print("its working\(question.text!)")
         
         // programmatically add buttons
         // first button
