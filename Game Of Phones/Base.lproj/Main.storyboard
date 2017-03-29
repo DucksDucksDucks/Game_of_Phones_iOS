@@ -42,7 +42,7 @@
                                 </state>
                                 <connections>
                                     <action selector="submitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Brb-tA-MMD"/>
-                                    <segue destination="KaQ-cT-CSF" kind="show" id="5On-Ix-84O"/>
+                                    <segue destination="KaQ-cT-CSF" kind="show" identifier="setNickname" id="5On-Ix-84O"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -64,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-617.39130434782612" y="33.423913043478265"/>
+            <point key="canvasLocation" x="-657" y="36"/>
         </scene>
         <!--TeacherID View Controller-->
         <scene sceneID="xOZ-HG-XP4">
@@ -175,7 +175,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="question" destination="FjI-uO-LNi" id="Oeo-6D-1it"/>
+                        <outlet property="questionLabel" destination="FjI-uO-LNi" id="4Rn-iQ-saI"/>
                         <outlet property="textAnswer" destination="a86-T7-jeB" id="lhm-rk-i3o"/>
                         <segue destination="Kw2-2m-BN0" kind="show" identifier="submitAnswer" id="NCV-Dr-M7D"/>
                     </connections>
@@ -223,7 +223,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="question" destination="bSJ-45-axv" id="oXi-Re-aCU"/>
+                        <outlet property="questionLabel" destination="bSJ-45-axv" id="VQL-iR-yzf"/>
                         <segue destination="Kw2-2m-BN0" kind="show" identifier="submitAnswer" id="PaN-lh-gGE"/>
                     </connections>
                 </viewController>
@@ -291,8 +291,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1X2-QV-3r8"/>
+        <segue reference="mbS-QM-v3r"/>
+        <segue reference="VBY-xZ-e61"/>
         <segue reference="NCV-Dr-M7D"/>
-        <segue reference="QfM-jW-OHh"/>
     </inferredMetricsTieBreakers>
 </document>

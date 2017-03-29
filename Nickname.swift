@@ -8,16 +8,24 @@
 
 import Foundation
 
-struct Nickname{
+//struct Nickname{
+//    
+//    public static var nickname: String = ""
+//    
+//
+//    
+//}
+
+class Nickname{
     
     public var nickname: String = ""
     
-    func getNickname() -> String{
+    
+    public func getNickname() -> String{
         return nickname
     }
     
-    mutating func setNickname(nickname : String){
+    public func setNickname(nickname : String){
         self.nickname = nickname
     }
-    
 }

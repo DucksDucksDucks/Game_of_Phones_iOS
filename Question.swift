@@ -8,9 +8,23 @@
 
 import Foundation
 
-struct Question {
+//struct Question {
+//    
+//    public static var questionText: String = ""
+//    
+//    public static var questionId : String = ""
+//    
+//    public static var questionType : String = ""
+//    
+//    public static var questionImage : String = ""
+//    
+//    public static var questionAnswers = [[String:AnyObject]]()
+//
+//}
+
+class Question {
     
-    public var questionText: String = ""
+    public var questionText : String = ""
     
     public var questionId : String = ""
     
@@ -18,45 +32,45 @@ struct Question {
     
     public var questionImage : String = ""
     
-    public var questionAnswers = [[String:String]]()
+    public var questionAnswers = [[String:AnyObject]]()
     
-    func getQuestionText() -> String{
-        return questionText
+    public func getQuestionText() -> String{
+        return self.questionText
     }
     
-    mutating func setQuestionText(questionText : String){
+    public func setQuestionText(questionText : String){
         self.questionText = questionText
     }
     
-    func getQuestionId() -> String{
-        return questionId
+    public func getQuestionId() -> String{
+        return self.questionId
     }
     
-    mutating func setQuestionId(questionId : String){
+    public func setQuestionId(questionId : String){
         self.questionId = questionId
     }
     
-    func getQuestionType() -> String{
-        return questionType
+    public func getQuestionType() -> String {
+        return self.questionType
     }
     
-    mutating func setQuestionType(questionType : String){
+    public func setQuestionType(questionType : String){
         self.questionType = questionType
     }
     
-    func getQuestionImage() -> String{
-        return questionImage
+    public func getQuestionImage() -> String{
+        return self.questionImage
     }
     
-    mutating func setQuestionImage(questionImage : String){
+    public func setQuestionImage(questionImage : String){
         self.questionImage = questionImage
     }
     
-    func getQuestionAnswers() -> [[String:String]]{
-        return questionAnswers 
+    public func getQuestionAnswers() -> [[String:AnyObject]]{
+        return self.questionAnswers
     }
     
-    mutating func setQuestionAnswers(questionAnswers : [[String:String]]){
+    public func setQuestionAnswers(questionAnswers : [[String:AnyObject]]){
         self.questionAnswers = questionAnswers
     }
 }

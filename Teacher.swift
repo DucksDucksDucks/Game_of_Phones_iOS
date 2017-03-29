@@ -8,15 +8,21 @@
 
 import Foundation
 
-struct Teacher{
+//struct Teacher{
+//    
+//    public static var teacherId: String = ""
+//    
+//}
+
+class Teacher{
     
-    public var teacherId: String = ""
+    public var teacherId : String = ""
     
-    func getTeacherId() -> String{
-        return teacherId
+    public func getTeacherId() -> String{
+        return self.teacherId
     }
     
-    mutating func setTeacherId(teacherId : String){
+    public func setTeacherId(teacherId : String){
         self.teacherId = teacherId
     }
 }

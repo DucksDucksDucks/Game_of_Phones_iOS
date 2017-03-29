@@ -10,51 +10,34 @@ import DLRadioButton
 
 class QuestionViewController: UIViewController {
 
-    @IBOutlet weak var scroll: UIScrollView!
-    
-    @IBOutlet weak var question: UILabel!
-    
-    var questionAnswers = [[String:AnyObject]]()
-    var selectedAnswer = [String:String]()
+    var postData = PostData()
+    var question : Question!
+    var teacher : Teacher!
+    var sendAnswerUrl = "http://mcs.drury.edu/amerritt/sendAnswer.php"
     var questionText: String = ""
-    var answerId = ""
-    var questionId = ""
-    var deviceId = ""
-    var teacherId = ""
+    
+    var selectedAnswer = [String:String]()
+    
+    @IBOutlet weak var questionLabel: UILabel!
+
+    
+
     
     @IBAction func submitAnswer(_ sender: UIButton) {
-        for _ in questionAnswers{
-            if(selectedAnswer["Answer"] == questionAnswers[0]["a_text"] as? String){
-                answerId = questionAnswers[0]["a_id"] as! String
+        var answerId: String!
+        for i in (0..<question.getQuestionAnswers().count){
+            if(selectedAnswer["Answer"] == question.getQuestionAnswers()[i]["a_text"] as? String){
+                answerId = question.getQuestionAnswers()[i]["a_id"] as! String
+                break
             }
         }
-        let bodyData = "answer=" + (answerId) + "&deviceID=" + (deviceId) + "&currentQID=" + (questionId)
+
         
-        var request = URLRequest(url: URL(string: "http://mcs.drury.edu/amerritt/sendAnswer.php")!)
-        request.httpMethod = "POST"
-        //request.httpBody = postString.data(using: .utf8)
-        request.httpBody = bodyData.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                // check for fundamental networking error
-                print("error=\(error)")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
-            
-            OperationQueue.main.addOperation {
-                self.performSegue(withIdentifier: "submitAnswer", sender: self.teacherId)
-            }
-            
-        }
-        task.resume()
+        let bodyData = "answer=" + (answerId) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId())
+        postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
+        
+        self.performSegue(withIdentifier: "submitAnswer", sender: self)
+
     }
     
     let swiftColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1)
@@ -76,29 +59,29 @@ class QuestionViewController: UIViewController {
 
     @objc @IBAction private func logSelectedButton(radioButton : DLRadioButton) {
             selectedAnswer["Answer"] = radioButton.selected()!.titleLabel!.text!
-            print(selectedAnswer["Answer"]!);
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destViewController : AnswerSubmittedViewController = segue.destination as? AnswerSubmittedViewController{
-            destViewController.teacherId = teacherId
+        if let destViewController : QuestionViewController = segue.destination as? QuestionViewController{
+            destViewController.teacher = teacher
+            destViewController.question = question
+            
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        questionLabel.text = question.getQuestionText()
         
-        question.text = questionText
-        print("its working\(question.text!)")
-        
-        // programmatically add buttons
-        // first button
+         //programmatically add buttons
+         //first button
         let frame = CGRect(x: 25, y: 100, width: 100, height: 100);
-        let firstRadioButton = createRadioButton(frame: frame, title: questionAnswers[0]["a_text"] as! String, id : questionAnswers[0]["a_id"] as! String, color: swiftColor);
-        if(questionAnswers[0]["p_filename"] as? String != nil){
+        let firstRadioButton = createRadioButton(frame: frame, title: question.getQuestionAnswers()[0]["a_text"] as! String, id : question.getQuestionAnswers()[0]["a_id"] as! String, color: swiftColor);
+        if(question.getQuestionAnswers()[0]["p_filename"] as? String != nil){
             var imageView: UIImageView
             imageView = UIImageView(frame:CGRect(x:50, y:165, width:50, height:50))
-            let url = URL(string: "http://mcs.drury.edu/gameofphones/mobilefiles/images/\(questionAnswers[0]["p_filename"]!)")
+            let url = URL(string: "http://mcs.drury.edu/gameofphones/mobilefiles/images/\(question.getQuestionAnswers()[0]["p_filename"]!)")
             let data = try? Data(contentsOf: url!)
             imageView.image = UIImage(data: data!)
             self.view.addSubview(imageView)
@@ -108,17 +91,17 @@ class QuestionViewController: UIViewController {
         var i = 0
         var y = 200
         var otherButtons : [DLRadioButton] = [];
-        for _ in questionAnswers{
+        for _ in question.getQuestionAnswers(){
             if(i == 0){
                 i += 1
             }
             else{
                 let frame = CGRect(x: 25, y: y, width: 100, height: 100);
-                let radioButton = createRadioButton(frame: frame, title: questionAnswers[i]["a_text"] as! String, id: questionAnswers[i]["a_id"] as! String, color: swiftColor);
-                if(questionAnswers[i]["p_filename"] as? String != nil){
+                let radioButton = createRadioButton(frame: frame, title: question.getQuestionAnswers()[i]["a_text"] as! String, id: question.getQuestionAnswers()[i]["a_id"] as! String, color: swiftColor);
+                if(question.getQuestionAnswers()[i]["p_filename"] as? String != nil){
                     var imageView: UIImageView
                     imageView = UIImageView(frame:CGRect(x:100, y:100, width:100, height:100))
-                    let url = URL(string: "http://mcs.drury.edu/gameofphones/mobilefiles/images/\(questionAnswers[i]["p_filename"]!)")
+                    let url = URL(string: "http://mcs.drury.edu/gameofphones/mobilefiles/images/\(question.getQuestionAnswers()[i]["p_filename"]!)")
                     let data = try? Data(contentsOf: url!)
                     imageView.image = UIImage(data: data!)
                     self.view.addSubview(imageView)
@@ -136,7 +119,6 @@ class QuestionViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }

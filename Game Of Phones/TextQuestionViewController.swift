@@ -10,56 +10,31 @@ import UIKit
 
 class TextQuestionViewController: UIViewController {
     
-    @IBOutlet weak var question: UILabel!
+    var postData = PostData()
+    var sendAnswerUrl = "http://mcs.drury.edu/amerritt/sendAnswer.php"
+    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var textAnswer: UITextField!
     
+    var teacher : Teacher!
+    var question : Question!
+    
     var questionText: String = ""
-    var questionId: String = ""
-    var deviceId: String = ""
-    var teacherId: String = ""
     
     @IBAction func answerSubmit(_ sender: UIButton) {
         
-        let bodyData = "answer=" + (textAnswer.text!) + "&deviceID=" + (deviceId) + "&currentQID=" + (questionId)
-        
-        var request = URLRequest(url: URL(string: "http://mcs.drury.edu/amerritt/sendAnswer.php")!)
-        request.httpMethod = "POST"
-        //request.httpBody = postString.data(using: .utf8)
-        request.httpBody = bodyData.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                // check for fundamental networking error
-                print("error=\(error)")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
-            
-            OperationQueue.main.addOperation {
-                self.performSegue(withIdentifier: "submitAnswer", sender: self.teacherId)
-            }
-            
-        }
-        task.resume()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destViewController : AnswerSubmittedViewController = segue.destination as? AnswerSubmittedViewController{
-            destViewController.teacherId = teacherId
-        }
+//        let bodyData = "answer=" + (textAnswer.text!) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (Question.questionId)
+//        
+//        postData.postData(postString: bodyData, urlString: sendAnswerUrl)
+//        
+//        OperationQueue.main.addOperation {
+//            self.performSegue(withIdentifier: "submitAnswer", sender: self)
+//        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        question.text = questionText
-        
+        questionLabel.text = questionText
     }
 
     override func didReceiveMemoryWarning() {
