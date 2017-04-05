@@ -19,9 +19,6 @@ class QuestionViewController: UIViewController {
     var selectedAnswer = [String:String]()
     
     @IBOutlet weak var questionLabel: UILabel!
-
-    
-
     
     @IBAction func submitAnswer(_ sender: UIButton) {
         var answerId: String!
@@ -62,7 +59,7 @@ class QuestionViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destViewController : QuestionViewController = segue.destination as? QuestionViewController{
+        if let destViewController : AnswerSubmittedViewController = segue.destination as? AnswerSubmittedViewController{
             destViewController.teacher = teacher
             destViewController.question = question
             

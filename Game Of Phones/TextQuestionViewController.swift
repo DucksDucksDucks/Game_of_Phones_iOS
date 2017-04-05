@@ -22,20 +22,27 @@ class TextQuestionViewController: UIViewController {
     
     @IBAction func answerSubmit(_ sender: UIButton) {
         
-//        let bodyData = "answer=" + (textAnswer.text!) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (Question.questionId)
-//        
-//        postData.postData(postString: bodyData, urlString: sendAnswerUrl)
-//        
-//        OperationQueue.main.addOperation {
-//            self.performSegue(withIdentifier: "submitAnswer", sender: self)
-//        }
+        let bodyData = "answer=" + (textAnswer.text!) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId())
+        
+        postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
+        
+        self.performSegue(withIdentifier: "submitAnswer", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destViewController : AnswerSubmittedViewController = segue.destination as? AnswerSubmittedViewController{
+            destViewController.teacher = teacher
+            destViewController.question = question
+            
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        questionLabel.text = questionText
-    }
+        questionLabel.text = question.getQuestionText()
+  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

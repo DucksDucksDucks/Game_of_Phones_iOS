@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -157,7 +157,7 @@
                                     <color key="titleColor" red="0.13606336712837219" green="0.10050175338983536" blue="0.030951457098126411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="answerSubmit:" destination="0MZ-2R-BOr" eventType="touchUpInside" id="gAd-T1-0Jt"/>
+                                    <action selector="answerSubmit:" destination="0MZ-2R-BOr" eventType="touchUpInside" id="ncj-0C-tPp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -176,7 +176,7 @@
                     </view>
                     <connections>
                         <outlet property="questionLabel" destination="FjI-uO-LNi" id="4Rn-iQ-saI"/>
-                        <outlet property="textAnswer" destination="a86-T7-jeB" id="lhm-rk-i3o"/>
+                        <outlet property="textAnswer" destination="a86-T7-jeB" id="dMu-1p-5Eq"/>
                         <segue destination="Kw2-2m-BN0" kind="show" identifier="submitAnswer" id="NCV-Dr-M7D"/>
                     </connections>
                 </viewController>
@@ -266,9 +266,16 @@
                                     <action selector="newQuestion:" destination="Kw2-2m-BN0" eventType="touchUpInside" id="0pl-cX-icq"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKO-pf-3zQ">
+                                <rect key="frame" x="41" y="160" width="332" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.83154296875" green="0.015810318787451285" blue="0.1186854593831065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.14509803921568629" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="CKO-pf-3zQ" firstAttribute="top" secondItem="G3c-Hb-mW4" secondAttribute="bottom" constant="8" id="7XY-p1-eyb"/>
                             <constraint firstItem="8zh-Dg-fh2" firstAttribute="top" secondItem="zl4-1p-RdP" secondAttribute="bottom" constant="8" id="8ed-zv-J5L"/>
                             <constraint firstAttribute="leadingMargin" secondItem="8zh-Dg-fh2" secondAttribute="leading" id="Hoo-G8-BIO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1uW-Uy-V6h" secondAttribute="trailing" id="RcW-t0-MFB"/>
@@ -277,22 +284,24 @@
                             <constraint firstAttribute="trailingMargin" secondItem="8zh-Dg-fh2" secondAttribute="trailing" id="h76-5i-Ci5"/>
                             <constraint firstAttribute="leadingMargin" secondItem="1uW-Uy-V6h" secondAttribute="leading" id="rNr-ab-HcW"/>
                             <constraint firstItem="1uW-Uy-V6h" firstAttribute="top" secondItem="8zh-Dg-fh2" secondAttribute="bottom" constant="17" id="rhA-Ni-bkD"/>
+                            <constraint firstItem="CKO-pf-3zQ" firstAttribute="centerX" secondItem="SLc-qJ-xBR" secondAttribute="centerX" id="tve-Ii-rbB"/>
                             <constraint firstAttribute="leadingMargin" secondItem="G3c-Hb-mW4" secondAttribute="leading" id="y8O-g4-mFB"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="CKO-pf-3zQ" id="5Xp-w6-Cbd"/>
                         <segue destination="ePL-9G-Vtl" kind="show" identifier="displayQuestion" id="QfM-jW-OHh"/>
                         <segue destination="0MZ-2R-BOr" kind="show" identifier="displayTextQuestion" id="1X2-QV-3r8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JzZ-h6-47o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1419" y="33"/>
+            <point key="canvasLocation" x="1418.840579710145" y="32.608695652173914"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mbS-QM-v3r"/>
-        <segue reference="VBY-xZ-e61"/>
+        <segue reference="1X2-QV-3r8"/>
         <segue reference="NCV-Dr-M7D"/>
+        <segue reference="QfM-jW-OHh"/>
     </inferredMetricsTieBreakers>
 </document>
