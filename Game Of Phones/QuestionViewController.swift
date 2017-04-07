@@ -73,7 +73,7 @@ class QuestionViewController: UIViewController {
         
          //programmatically add buttons
          //first button
-        let frame = CGRect(x: 25, y: 100, width: 100, height: 100);
+        let frame = CGRect(x: 25, y: 100, width: 200, height: 100);
         let firstRadioButton = createRadioButton(frame: frame, title: question.getQuestionAnswers()[0]["a_text"] as! String, id : question.getQuestionAnswers()[0]["a_id"] as! String, color: swiftColor);
         if(question.getQuestionAnswers()[0]["p_filename"] as? String != nil){
             var imageView: UIImageView
@@ -93,7 +93,7 @@ class QuestionViewController: UIViewController {
                 i += 1
             }
             else{
-                let frame = CGRect(x: 25, y: y, width: 100, height: 100);
+                let frame = CGRect(x: 25, y: y, width: 200, height: 100);
                 let radioButton = createRadioButton(frame: frame, title: question.getQuestionAnswers()[i]["a_text"] as! String, id: question.getQuestionAnswers()[i]["a_id"] as! String, color: swiftColor);
                 if(question.getQuestionAnswers()[i]["p_filename"] as? String != nil){
                     var imageView: UIImageView
