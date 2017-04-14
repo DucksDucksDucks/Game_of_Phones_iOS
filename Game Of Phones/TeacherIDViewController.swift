@@ -25,32 +25,42 @@ class TeacherIDViewController: UIViewController {
     var questionAnswerDict = [String:String]()
     var questionAnswersArray = [[String:AnyObject]]()
 
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var teacherId: UITextField!
     
     @IBAction func submitButton(_ sender: UIButton) {
 
-        teacher.setTeacherId(teacherId: teacherId.text!)
-        
-        postData.postData(postString: "deviceID=\(teacher.getTeacherId())", urlString : teacherIdUrl, teacher: teacher, question: question)
-        
-        postData.postData(postString: "deviceID=\(teacher.getTeacherId())", urlString : questionInfoUrl, teacher: teacher, question: question)
+        if (teacherId.text?.trimmingCharacters(in: .whitespaces).isEmpty)! || (teacherId.text?.isEmpty)!{
+            errorLabel.text = "Please enter a valid Teacher ID."
+        } else {
+            teacher.setTeacherId(teacherId: teacherId.text!)
+            
+            postData.postData(postString: "deviceID=\(teacher.getTeacherId())", urlString : teacherIdUrl, teacher: teacher, question: question)
+            
+            if(teacher.getTeacherId() == "Teacher ID not found"){
+                errorLabel.text = "Please enter a valid Teacher ID."
+            } else {
+            
+                postData.postData(postString: "deviceID=\(teacher.getTeacherId())", urlString : questionInfoUrl, teacher: teacher, question: question)
 
-        
-        postData.postData(postString: "questionID=\(question.getQuestionId())", urlString: questionAnswersUrl, teacher: teacher, question: question)
+                
+                postData.postData(postString: "questionID=\(question.getQuestionId())", urlString: questionAnswersUrl, teacher: teacher, question: question)
 
-        if(question.getQuestionType() == "sa"){
-            OperationQueue.main.addOperation {
-                self.performSegue(withIdentifier: "displayTextQuestion", sender: self.question.getQuestionAnswers())
-            }
-        }
-        else if(question.getQuestionType() == "draw"){
-            OperationQueue.main.addOperation {
-                self.performSegue(withIdentifier: "displayDrawQuestion", sender: self)
-            }
-        }
-        else {
-            OperationQueue.main.addOperation {
-                self.performSegue(withIdentifier: "displayQuestion", sender: self.question.getQuestionAnswers())
+                if(question.getQuestionType() == "sa"){
+                    OperationQueue.main.addOperation {
+                        self.performSegue(withIdentifier: "displayTextQuestion", sender: self.question.getQuestionAnswers())
+                    }
+                }
+                else if(question.getQuestionType() == "draw"){
+                    OperationQueue.main.addOperation {
+                        self.performSegue(withIdentifier: "displayDrawQuestion", sender: self)
+                    }
+                }
+                else {
+                    OperationQueue.main.addOperation {
+                        self.performSegue(withIdentifier: "displayQuestion", sender: self.question.getQuestionAnswers())
+                    }
+                }
             }
         }
 

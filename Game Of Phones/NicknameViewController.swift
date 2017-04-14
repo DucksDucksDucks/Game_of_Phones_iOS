@@ -15,22 +15,19 @@ class NicknameViewController: UIViewController {
     let question = Question()
     let urlString = "http://mcs.drury.edu/amerritt/createDeviceID.php"
     @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
     @IBAction func submitButton(_ sender: UIButton) {
         let postData = PostData()
-        if nameField.text?.isEmpty == false{
-//            Nickname.nickname = nameField.text!
-            //let postNicknameString = "nickname=\(Nickname.nickname)"
-            //postData.postData(postString: postNicknameString, urlString: urlString)
-            
-            
+        if (nameField.text?.trimmingCharacters(in: .whitespaces).isEmpty)! || (nameField.text?.isEmpty)!{
+            errorLabel.text = "Please enter a nickname."
+        } else {
             nickname.setNickname(nickname: nameField.text!)
             let postNicknameString = "nickname=\(nickname.getNickname())"
             postData.postData(postString: postNicknameString, urlString: urlString, teacher: teacher, question: question)
             OperationQueue.main.addOperation {
                 self.performSegue(withIdentifier: "setNickname", sender: self)
             }
-            
         }
         
     }

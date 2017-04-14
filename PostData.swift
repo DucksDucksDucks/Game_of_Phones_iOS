@@ -55,17 +55,22 @@ class PostData{
                 }
             
                 if let questionInfo = json["question_info"] as? [[String:AnyObject]]{
-                
-                    if(questionInfo[0]["m_device_id"] != nil){
-                        teacher.setTeacherId(teacherId: questionInfo[0]["m_device_id"] as! String)
-                        question.setQuestionId(questionId: questionInfo[0]["q_id"] as! String)
-                    }
                     
-                    if(questionInfo[0]["q_type"] != nil){
-                        question.setQuestionText(questionText: questionInfo[0]["q_text"] as! String)
-                        question.setQuestionType(questionType: questionInfo[0]["q_type"] as! String)
-                        if (questionInfo[0]["p_filename"] as? String) != nil{
-                            question.setQuestionImage(questionImage: questionInfo[0]["p_filename"] as! String)
+                    if(questionInfo.isEmpty){
+                        teacher.setTeacherId(teacherId: "Teacher ID not found")
+                    } else {
+                
+                        if(questionInfo[0]["m_device_id"] != nil){
+                            teacher.setTeacherId(teacherId: questionInfo[0]["m_device_id"] as! String)
+                            question.setQuestionId(questionId: questionInfo[0]["q_id"] as! String)
+                        }
+                        
+                        if(questionInfo[0]["q_type"] != nil){
+                            question.setQuestionText(questionText: questionInfo[0]["q_text"] as! String)
+                            question.setQuestionType(questionType: questionInfo[0]["q_type"] as! String)
+                            if (questionInfo[0]["p_filename"] as? String) != nil{
+                                question.setQuestionImage(questionImage: questionInfo[0]["p_filename"] as! String)
+                            }
                         }
                     }
                 }

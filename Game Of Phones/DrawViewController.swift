@@ -11,6 +11,7 @@ import UIKit
 class DrawViewController: UIViewController {
     
 
+    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var tempImageView: UIImageView!
     var postData = PostData()
@@ -21,6 +22,8 @@ class DrawViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        questionLabel.text = question.getQuestionText()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +55,10 @@ class DrawViewController: UIViewController {
     
     // MARK: - Actions
     
+    @IBAction func reset(_ sender: Any) {
+        mainImageView.image = UIImage(named: "graph.png")
+        tempImageView.image = nil
+    }
     @IBAction func erase(_ sender: AnyObject) {
         mainImageView.image = UIImage(named: "graph.png")
         tempImageView.image = nil
@@ -92,7 +99,6 @@ class DrawViewController: UIViewController {
     func drawLineFrom(_ fromPoint: CGPoint, toPoint: CGPoint) {
         
         // 1
-        //UIGraphicsBeginImageContext(view.frame.size)
         UIGraphicsBeginImageContext(mainImageView.frame.size)
         let context = UIGraphicsGetCurrentContext()
         tempImageView.image?.draw(in: CGRect(x: mainImageView.bounds.origin.x, y: mainImageView.bounds.origin.y, width: mainImageView.frame.size.width, height: mainImageView.frame.size.height))
@@ -144,7 +150,7 @@ class DrawViewController: UIViewController {
         
         if let imageData = UIImagePNGRepresentation(mainImageView.image!) {
             let encodedImageData = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-            
+            print("Here: " + encodedImageData);
         let imageBodyData = "image=" + (encodedImageData) + "&filename=" + (DeviceId.deviceIdForAnswer) + "image"
         postData.postData(postString: imageBodyData, urlString: uploadPhotoUrl, teacher: teacher, question: question)
             
