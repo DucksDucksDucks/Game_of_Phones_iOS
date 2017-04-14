@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5148A8EC1E9E823B00BBC700 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5148A8EB1E9E823B00BBC700 /* DrawViewController.swift */; };
+		5148A8EE1E9E85BD00BBC700 /* graph.png in Resources */ = {isa = PBXBuildFile; fileRef = 5148A8ED1E9E85BD00BBC700 /* graph.png */; };
+		5148A8F01E9E8C1500BBC700 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5148A8EF1E9E8C1500BBC700 /* Images.xcassets */; };
 		51502D861DF528E9001C845A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51502D851DF528E9001C845A /* AppDelegate.swift */; };
 		51502D881DF528E9001C845A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51502D871DF528E9001C845A /* NicknameViewController.swift */; };
 		51502D8B1DF528E9001C845A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51502D891DF528E9001C845A /* Main.storyboard */; };
@@ -39,6 +42,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5148A8EB1E9E823B00BBC700 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		5148A8ED1E9E85BD00BBC700 /* graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph.png; sourceTree = "<group>"; };
+		5148A8EF1E9E8C1500BBC700 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		51502D821DF528E9001C845A /* Game Of Phones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Of Phones.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		51502D851DF528E9001C845A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51502D871DF528E9001C845A /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +79,8 @@
 		51502D791DF528E9001C845A = {
 			isa = PBXGroup;
 			children = (
+				5148A8ED1E9E85BD00BBC700 /* graph.png */,
+				5148A8EF1E9E8C1500BBC700 /* Images.xcassets */,
 				5186D5FA1E6737B700418F87 /* Model */,
 				51502D841DF528E9001C845A /* Game Of Phones */,
 				51502D831DF528E9001C845A /* Products */,
@@ -94,6 +102,7 @@
 				51F76A521E5DF73F00DA7A7A /* DLRadioButton.h */,
 				51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */,
 				51502D891DF528E9001C845A /* Main.storyboard */,
+				5148A8EB1E9E823B00BBC700 /* DrawViewController.swift */,
 				51502D851DF528E9001C845A /* AppDelegate.swift */,
 				51502D871DF528E9001C845A /* NicknameViewController.swift */,
 				51502D971DF5290D001C845A /* TeacherIDViewController.swift */,
@@ -189,7 +198,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				51502D8D1DF528E9001C845A /* Assets.xcassets in Resources */,
+				5148A8F01E9E8C1500BBC700 /* Images.xcassets in Resources */,
 				51502D8B1DF528E9001C845A /* Main.storyboard in Resources */,
+				5148A8EE1E9E85BD00BBC700 /* graph.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +215,7 @@
 				5186D6061E67642500418F87 /* PostData.swift in Sources */,
 				5186D5FE1E673A3600418F87 /* Nickname.swift in Sources */,
 				51F76A541E5DF73F00DA7A7A /* DLRadioButton.m in Sources */,
+				5148A8EC1E9E823B00BBC700 /* DrawViewController.swift in Sources */,
 				51502D881DF528E9001C845A /* NicknameViewController.swift in Sources */,
 				51502D9A1DF52D0E001C845A /* QuestionViewController.swift in Sources */,
 				B601B2571E608CE2001F5B90 /* DeviceId.swift in Sources */,

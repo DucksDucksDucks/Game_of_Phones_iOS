@@ -29,8 +29,7 @@ class QuestionViewController: UIViewController {
             }
         }
 
-        
-        let bodyData = "answer=" + (answerId) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId())
+        let bodyData = "answer=" + (answerId) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId()) + "&teacherID" + (teacher.getTeacherId())
         postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
         
         self.performSegue(withIdentifier: "submitAnswer", sender: self)

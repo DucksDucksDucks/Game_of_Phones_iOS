@@ -27,17 +27,7 @@ class TeacherIDViewController: UIViewController {
 
     @IBOutlet weak var teacherId: UITextField!
     
-    
-    func activityIndicatorStart(){
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-    }
-    
     @IBAction func submitButton(_ sender: UIButton) {
-        activityIndicatorStart()
 
         teacher.setTeacherId(teacherId: teacherId.text!)
         
@@ -51,6 +41,11 @@ class TeacherIDViewController: UIViewController {
         if(question.getQuestionType() == "sa"){
             OperationQueue.main.addOperation {
                 self.performSegue(withIdentifier: "displayTextQuestion", sender: self.question.getQuestionAnswers())
+            }
+        }
+        else if(question.getQuestionType() == "draw"){
+            OperationQueue.main.addOperation {
+                self.performSegue(withIdentifier: "displayDrawQuestion", sender: self)
             }
         }
         else {
@@ -68,6 +63,10 @@ class TeacherIDViewController: UIViewController {
             
         }
         else if let destViewController : TextQuestionViewController = segue.destination as? TextQuestionViewController{
+            destViewController.teacher = teacher
+            destViewController.question = question
+        }
+        else if let destViewController : DrawViewController = segue.destination as? DrawViewController{
             destViewController.teacher = teacher
             destViewController.question = question
         }

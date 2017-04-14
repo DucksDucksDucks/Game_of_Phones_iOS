@@ -29,7 +29,6 @@ class AnswerSubmittedViewController: UIViewController {
     }
     
     @IBAction func newQuestion(_ sender: UIButton) {
-        activityIndicatorStart()
         
         let questionId = question.getQuestionId()
         
