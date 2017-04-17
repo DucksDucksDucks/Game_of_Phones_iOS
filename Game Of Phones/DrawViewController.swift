@@ -17,7 +17,7 @@ class DrawViewController: UIViewController {
     var postData = PostData()
     var question : Question!
     var teacher : Teacher!
-    var sendAnswerUrl = "http://mcs.drury.edu/amerritt/sendAnswer.php"
+    var sendAnswerUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/sendAnswer.php"
     var uploadPhotoUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/uploadphoto.php"
     
     override func viewDidLoad() {
@@ -150,11 +150,11 @@ class DrawViewController: UIViewController {
         
         if let imageData = UIImagePNGRepresentation(mainImageView.image!) {
             let encodedImageData = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-            print("Here: " + encodedImageData);
+            
         let imageBodyData = "image=" + (encodedImageData) + "&filename=" + (DeviceId.deviceIdForAnswer) + "image"
         postData.postData(postString: imageBodyData, urlString: uploadPhotoUrl, teacher: teacher, question: question)
             
-        let bodyData = "answer=" + (DeviceId.deviceIdForAnswer) + "image.png" + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId())
+        let bodyData = "answer=" + (DeviceId.deviceIdForAnswer) + "image.png" + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId() + "&teacherID=" + (teacher.getTeacherId()))
         postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
         
         self.performSegue(withIdentifier: "submitAnswer", sender: self)

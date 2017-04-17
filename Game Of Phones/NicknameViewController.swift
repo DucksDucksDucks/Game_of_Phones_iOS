@@ -13,7 +13,7 @@ class NicknameViewController: UIViewController {
     let nickname = Nickname()
     let teacher = Teacher()
     let question = Question()
-    let urlString = "http://mcs.drury.edu/amerritt/createDeviceID.php"
+    let urlString = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/createDeviceID.php"
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     

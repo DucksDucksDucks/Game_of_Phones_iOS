@@ -11,7 +11,7 @@ import UIKit
 class TextQuestionViewController: UIViewController {
     
     var postData = PostData()
-    var sendAnswerUrl = "http://mcs.drury.edu/amerritt/sendAnswer.php"
+    var sendAnswerUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/sendAnswer.php"
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var textAnswer: UITextField!
     
@@ -22,7 +22,7 @@ class TextQuestionViewController: UIViewController {
     
     @IBAction func answerSubmit(_ sender: UIButton) {
         
-        let bodyData = "answer=" + (textAnswer.text!) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId())
+        let bodyData = "answer=" + (textAnswer.text!) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId()) + "&teacherID=" + (teacher.getTeacherId())
         
         postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
         

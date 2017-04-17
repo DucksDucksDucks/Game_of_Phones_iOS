@@ -13,7 +13,7 @@ class QuestionViewController: UIViewController {
     var postData = PostData()
     var question : Question!
     var teacher : Teacher!
-    var sendAnswerUrl = "http://mcs.drury.edu/amerritt/sendAnswer.php"
+    var sendAnswerUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/sendAnswer.php"
     var questionText: String = ""
     
     var selectedAnswer = [String:String]()
@@ -28,8 +28,8 @@ class QuestionViewController: UIViewController {
                 break
             }
         }
-
-        let bodyData = "answer=" + (answerId) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId()) + "&teacherID" + (teacher.getTeacherId())
+        
+        let bodyData = "answer=" + (answerId) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId()) + "&teacherID=" + (teacher.getTeacherId())
         postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
         
         self.performSegue(withIdentifier: "submitAnswer", sender: self)

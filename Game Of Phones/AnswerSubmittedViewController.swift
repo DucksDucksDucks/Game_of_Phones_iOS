@@ -14,9 +14,9 @@ class AnswerSubmittedViewController: UIViewController {
     var question : Question!
     var teacher : Teacher!
     
-    let teacherIdUrl = "http://mcs.drury.edu/amerritt/isTeacherIDSet.php"
-    let questionInfoUrl = "http://mcs.drury.edu/amerritt/getQuestion.php"
-    let questionAnswersUrl = "http://mcs.drury.edu/amerritt/getQuestionAnswers.php"
+    let teacherIdUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/isTeacherIDSet.php"
+    let questionInfoUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/getQuestion.php"
+    let questionAnswersUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/getQuestionAnswers.php"
     
     @IBOutlet weak var errorLabel: UILabel!
     
