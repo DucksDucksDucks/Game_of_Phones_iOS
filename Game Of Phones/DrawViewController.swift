@@ -147,9 +147,10 @@ class DrawViewController: UIViewController {
         tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: view.frame.size.width, height: tempImageView.frame.size.height), blendMode: CGBlendMode.normal, alpha: opacity)
         mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+
         
         if let imageData = UIImagePNGRepresentation(mainImageView.image!) {
-            let encodedImageData = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+            let encodedImageData = imageData.base64EncodedString(options: .init(rawValue: 0)).replacingOccurrences(of: "+", with: "%2B", options: .literal, range: nil)
             
         let imageBodyData = "image=" + (encodedImageData) + "&filename=" + (DeviceId.deviceIdForAnswer) + "image"
         postData.postData(postString: imageBodyData, urlString: uploadPhotoUrl, teacher: teacher, question: question)

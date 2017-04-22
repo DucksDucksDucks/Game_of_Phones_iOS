@@ -589,11 +589,11 @@
         <image name="LightGreen" width="53" height="332"/>
         <image name="Red" width="53" height="332"/>
         <image name="Yellow" width="53" height="332"/>
-        <image name="graph.png" width="1456" height="1256"/>
+        <image name="graph.png" width="1432" height="1239"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1X2-QV-3r8"/>
-        <segue reference="PaN-lh-gGE"/>
+        <segue reference="Z27-p7-tqU"/>
         <segue reference="QfM-jW-OHh"/>
     </inferredMetricsTieBreakers>
 </document>
