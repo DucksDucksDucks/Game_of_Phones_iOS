@@ -19,6 +19,7 @@ class QuestionViewController: UIViewController {
     var selectedAnswer = [String:String]()
     
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBAction func submitAnswer(_ sender: UIButton) {
         var answerId: String!
