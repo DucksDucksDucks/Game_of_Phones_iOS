@@ -215,36 +215,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bSJ-45-axv">
-                                <rect key="frame" x="33" y="44" width="349" height="67"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A1A-Is-41K">
+                                <rect key="frame" x="0.0" y="136" width="414" height="600"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bSJ-45-axv">
+                                <rect key="frame" x="20" y="44" width="374" height="69"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" red="0.70980392156862748" green="0.70980392156862748" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ifi-3R-Rgf">
-                                <rect key="frame" x="33" y="641" width="349" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.68235294117647061" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Submit">
-                                    <color key="titleColor" red="0.098039215686274508" green="0.074509803921568626" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="submitAnswer:" destination="ePL-9G-Vtl" eventType="touchUpInside" id="A1V-te-ZDw"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.14509803921568629" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="bSJ-45-axv" firstAttribute="top" secondItem="idc-tE-pPW" secondAttribute="bottom" constant="41" id="6IP-3E-xaC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bSJ-45-axv" secondAttribute="trailing" constant="12" id="Q9f-2m-LYL"/>
-                            <constraint firstItem="bSJ-45-axv" firstAttribute="leading" secondItem="3sN-9A-CmX" secondAttribute="leadingMargin" constant="13" id="RrK-f3-X9F"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ifi-3R-Rgf" secondAttribute="trailing" constant="12" id="Y3m-oR-mDr"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="bSJ-45-axv" secondAttribute="leading" id="T72-SO-L5Y"/>
                             <constraint firstItem="bSJ-45-axv" firstAttribute="centerX" secondItem="3sN-9A-CmX" secondAttribute="centerX" id="cfq-bf-G6Y"/>
-                            <constraint firstItem="Ifi-3R-Rgf" firstAttribute="leading" secondItem="3sN-9A-CmX" secondAttribute="leadingMargin" constant="13" id="md9-8T-qVc"/>
-                            <constraint firstItem="QDW-ta-57P" firstAttribute="top" secondItem="Ifi-3R-Rgf" secondAttribute="bottom" constant="65" id="mog-FG-nnX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bSJ-45-axv" secondAttribute="trailing" id="tWe-g1-6U6"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="questionLabel" destination="bSJ-45-axv" id="VQL-iR-yzf"/>
+                        <outlet property="scrollView" destination="A1A-Is-41K" id="TBe-bQ-kU9"/>
                         <segue destination="Kw2-2m-BN0" kind="show" identifier="submitAnswer" id="PaN-lh-gGE"/>
                     </connections>
                 </viewController>
@@ -592,8 +583,8 @@
         <image name="graph.png" width="1432" height="1239"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QfM-jW-OHh"/>
+        <segue reference="VBY-xZ-e61"/>
+        <segue reference="mbS-QM-v3r"/>
         <segue reference="PaN-lh-gGE"/>
-        <segue reference="1X2-QV-3r8"/>
     </inferredMetricsTieBreakers>
 </document>
