@@ -23,8 +23,8 @@ class QuestionViewController: UIViewController {
     let SPACING_BETWEEN_QUESION_AND_ANSWERS : CGFloat = 25
     let CONTENT_WIDTH : CGFloat = 40
     let SPACING_BETWEEN_SUBMIT_BUTTON_AND_VIEW : CGFloat = 50
-    let IMAGE_HEIGHT : CGFloat = 50
-    let IMAGE_WIDTH : CGFloat = 50
+    let IMAGE_HEIGHT : CGFloat = 200
+    let IMAGE_WIDTH : CGFloat = 300
     let DEFAULT_RADIO_BUTTON_HEIGHT : CGFloat = 20
     let DEFAULT_LABEL_AND_BUTTON_HEIGHT : CGFloat = 30
     
@@ -89,7 +89,7 @@ class QuestionViewController: UIViewController {
         
         if(question.getQuestionAnswers()[0]["p_filename"] as? String != nil){
             var imageView: UIImageView
-            imageView = UIImageView(frame:CGRect(x:40, y: contentHeight + SPACING_BETWEEN_QUESION_AND_IMAGE, width: IMAGE_WIDTH, height: IMAGE_HEIGHT))
+            imageView = UIImageView(frame:CGRect(x:40, y: contentHeight + SPACING_BETWEEN_QUESION_AND_IMAGE, width: view.frame.width - LEADING_SPACE - CONTENT_WIDTH, height: IMAGE_HEIGHT))
             let url = URL(string: "http://mcs.drury.edu/gameofphones/mobilefiles/images/\(question.getQuestionAnswers()[0]["p_filename"]!)")
             let data = try? Data(contentsOf: url!)
             imageView.image = UIImage(data: data!)
@@ -114,7 +114,7 @@ class QuestionViewController: UIViewController {
                 
                 if(question.getQuestionAnswers()[i]["p_filename"] as? String != nil){
                     var imageView: UIImageView
-                    imageView = UIImageView(frame:CGRect(x:40, y: contentHeight + SPACING_BETWEEN_QUESION_AND_IMAGE, width: IMAGE_WIDTH, height: IMAGE_HEIGHT))
+                    imageView = UIImageView(frame:CGRect(x:40, y: contentHeight + SPACING_BETWEEN_QUESION_AND_IMAGE, width: view.frame.width - LEADING_SPACE - CONTENT_WIDTH, height: IMAGE_HEIGHT))
                     let url = URL(string: "http://mcs.drury.edu/gameofphones/mobilefiles/images/\(question.getQuestionAnswers()[i]["p_filename"]!)")
                     let data = try? Data(contentsOf: url!)
                     imageView.image = UIImage(data: data!)
@@ -153,7 +153,7 @@ class QuestionViewController: UIViewController {
     
     func createQuestionImage(){
         if(question.getQuestionImage() != ""){
-            let questionImage = UIImageView(frame:CGRect(x:LEADING_SPACE, y: questionLabel.frame.height + SPACING_BETWEEN_QUESION_AND_IMAGE, width: IMAGE_WIDTH, height:IMAGE_HEIGHT))
+            let questionImage = UIImageView(frame:CGRect(x:LEADING_SPACE, y: questionLabel.frame.height + SPACING_BETWEEN_QUESION_AND_IMAGE, width: view.frame.width - LEADING_SPACE - CONTENT_WIDTH, height:IMAGE_HEIGHT))
             let url = URL(string: questionImageUrl + question.getQuestionImage())
             let data = try? Data(contentsOf: url!)
             questionImage.image = UIImage(data: data!)

@@ -23,7 +23,8 @@ class DrawViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        questionLabel.text = question.getQuestionText()
+//        questionLabel.text = question.getQuestionText()
+        questionLabel.text = "hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hi"
         print(DeviceId.deviceIdForAnswer)
     }
 

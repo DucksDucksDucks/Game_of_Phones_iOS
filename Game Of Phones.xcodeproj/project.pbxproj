@@ -45,7 +45,7 @@
 		5148A8EB1E9E823B00BBC700 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		5148A8ED1E9E85BD00BBC700 /* graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph.png; sourceTree = "<group>"; };
 		5148A8EF1E9E8C1500BBC700 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		51502D821DF528E9001C845A /* Game Of Phones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Of Phones.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		51502D821DF528E9001C845A /* eDUcation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eDUcation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51502D851DF528E9001C845A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51502D871DF528E9001C845A /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		51502D8A1DF528E9001C845A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 		51502D831DF528E9001C845A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				51502D821DF528E9001C845A /* Game Of Phones.app */,
+				51502D821DF528E9001C845A /* eDUcation.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,7 +153,7 @@
 			);
 			name = "Game Of Phones";
 			productName = "Game Of Phones";
-			productReference = 51502D821DF528E9001C845A /* Game Of Phones.app */;
+			productReference = 51502D821DF528E9001C845A /* eDUcation.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -347,7 +347,7 @@
 				INFOPLIST_FILE = "Game Of Phones/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.treehouse.Game-Of-Phones";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = eDUcation;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -366,7 +366,7 @@
 				INFOPLIST_FILE = "Game Of Phones/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.treehouse.Game-Of-Phones";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = eDUcation;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
