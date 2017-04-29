@@ -24,11 +24,11 @@ class DrawViewController: UIViewController {
         super.viewDidLoad()
         
         questionLabel.text = question.getQuestionText()
+        print(DeviceId.deviceIdForAnswer)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     var lastPoint = CGPoint.zero
@@ -53,8 +53,6 @@ class DrawViewController: UIViewController {
         (1.0, 1.0, 1.0),
         ]
     
-    // MARK: - Actions
-    
     @IBAction func reset(_ sender: Any) {
         mainImageView.image = UIImage(named: "graph.png")
         tempImageView.image = nil
@@ -62,17 +60,6 @@ class DrawViewController: UIViewController {
     @IBAction func erase(_ sender: AnyObject) {
         mainImageView.image = UIImage(named: "graph.png")
         tempImageView.image = nil
-    }
-    
-    @IBAction func share(_ sender: AnyObject) {
-        UIGraphicsBeginImageContext(mainImageView.bounds.size)
-        mainImageView.image?.draw(in: CGRect(x: 0, y: 0,
-                                             width: mainImageView.frame.size.width, height: mainImageView.frame.size.height))
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        let activity = UIActivityViewController(activityItems: [image!], applicationActivities: nil)
-        present(activity, animated: true, completion: nil)
     }
     
     @IBAction func pencilPressed(_ sender: AnyObject) {
@@ -98,24 +85,20 @@ class DrawViewController: UIViewController {
     
     func drawLineFrom(_ fromPoint: CGPoint, toPoint: CGPoint) {
         
-        // 1
         UIGraphicsBeginImageContext(mainImageView.frame.size)
         let context = UIGraphicsGetCurrentContext()
         tempImageView.image?.draw(in: CGRect(x: mainImageView.bounds.origin.x, y: mainImageView.bounds.origin.y, width: mainImageView.frame.size.width, height: mainImageView.frame.size.height))
         
-        // 2
         context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
         context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
-        // 3
+        
         context?.setLineCap(CGLineCap.round)
         context?.setLineWidth(brushWidth)
         context?.setStrokeColor(red: red, green: green, blue: blue, alpha: 1.0)
         context?.setBlendMode(CGBlendMode.normal)
         
-        // 4
         context?.strokePath()
         
-        // 5
         tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         tempImageView.alpha = opacity
         UIGraphicsEndImageContext()
@@ -123,20 +106,17 @@ class DrawViewController: UIViewController {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // 6
         swiped = true
         if let touch = touches.first {
             let currentPoint = touch.location(in: tempImageView)
             drawLineFrom(lastPoint, toPoint: currentPoint)
             
-            // 7
             lastPoint = currentPoint
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !swiped {
-            // draw a single point
             drawLineFrom(lastPoint, toPoint: lastPoint)
         }
     }

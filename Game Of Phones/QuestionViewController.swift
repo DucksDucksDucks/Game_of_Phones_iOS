@@ -1,7 +1,4 @@
 //
-//  ThirdViewController.swift
-//  Game Of Phones
-//
 //  Created by Josh Harrold on 12/4/16.
 //  Copyright © 2016 Josh Harrold. All rights reserved.
 //
@@ -14,31 +11,44 @@ class QuestionViewController: UIViewController {
     var question : Question!
     var teacher : Teacher!
     var sendAnswerUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/sendAnswer.php"
-    var questionText: String = ""
-    
+    var questionImageUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/images/"
     var selectedAnswer = [String:String]()
     
-    @IBOutlet weak var questionLabel: UILabel!
+    let textColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1)
+    let themeColor = UIColor(red:1, green: 174/255, blue: 40/255, alpha: 1)
+    
+    let SPACING_BETWEEN_CONTENTS : CGFloat = 10
+    let SPACING_BETWEEN_QUESION_AND_IMAGE : CGFloat = 15
+    let LEADING_SPACE : CGFloat = 20
+    let SPACING_BETWEEN_QUESION_AND_ANSWERS : CGFloat = 25
+    let CONTENT_WIDTH : CGFloat = 40
+    let SPACING_BETWEEN_SUBMIT_BUTTON_AND_VIEW : CGFloat = 50
+    let IMAGE_HEIGHT : CGFloat = 50
+    let IMAGE_WIDTH : CGFloat = 50
+    let DEFAULT_RADIO_BUTTON_HEIGHT : CGFloat = 20
+    let DEFAULT_LABEL_AND_BUTTON_HEIGHT : CGFloat = 30
+    
     @IBOutlet weak var scrollView: UIScrollView!
+    var questionLabel : UILabel!
+    var contentHeight : CGFloat!
     
     func submit(sender: UIButton){
         var answerId: String!
-        for i in (0..<question.getQuestionAnswers().count){
-            if(selectedAnswer["Answer"] == question.getQuestionAnswers()[i]["a_text"] as? String){
-                answerId = question.getQuestionAnswers()[i]["a_id"] as! String
-                break
+        if(selectedAnswer["Answer"] != nil){
+            for i in (0..<question.getQuestionAnswers().count){
+                if(selectedAnswer["Answer"] == question.getQuestionAnswers()[i]["a_text"] as? String){
+                    answerId = question.getQuestionAnswers()[i]["a_id"] as! String
+                    break
+                }
             }
+            
+            let bodyData = "answer=" + (answerId) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId()) + "&teacherID=" + (teacher.getTeacherId())
+            postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
+            
+            self.performSegue(withIdentifier: "submitAnswer", sender: self)
         }
-        
-        let bodyData = "answer=" + (answerId) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId()) + "&teacherID=" + (teacher.getTeacherId())
-        postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
-        
-        self.performSegue(withIdentifier: "submitAnswer", sender: self)
 
     }
-    
-    let swiftColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1)
-    let radioIndicatorColor = UIColor(red:1, green: 174/255, blue: 40/255, alpha: 1)
     
     private func createRadioButton(frame : CGRect, title : String, id : String, color : UIColor) -> DLRadioButton {
         
@@ -46,13 +56,14 @@ class QuestionViewController: UIViewController {
         radioButton.titleLabel!.font = UIFont.systemFont(ofSize: 14);
         radioButton.setTitle(title, for: UIControlState.normal);
         radioButton.setTitleColor(color, for: UIControlState.normal);
-        radioButton.iconColor = swiftColor;
-        radioButton.indicatorColor = radioIndicatorColor;
+        radioButton.iconColor = textColor;
+        radioButton.indicatorColor = themeColor;
         radioButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left;
         radioButton.addTarget(self, action: #selector(QuestionViewController.logSelectedButton), for: UIControlEvents.touchUpInside);
-        //radioButton.titleLabel?.lineBreakMode = .byWordWrapping
+        radioButton.titleLabel?.lineBreakMode = .byWordWrapping
         radioButton.titleLabel?.numberOfLines = 0
         radioButton.contentVerticalAlignment = .top
+        radioButton.layoutIfNeeded()
         scrollView.addSubview(radioButton);
         return radioButton;
     }
@@ -69,102 +80,100 @@ class QuestionViewController: UIViewController {
         }
     }
     
-    func displayRadioButtons(questionImage : UIImageView) -> Int{
-        //first button
-        let frame = CGRect(x: 25, y: Int(questionImage.frame.height), width: Int(questionLabel.frame.width), height: 100);
-        let firstRadioButton = createRadioButton(frame: frame, title: question.getQuestionAnswers()[0]["a_text"] as! String, id : question.getQuestionAnswers()[0]["a_id"] as! String, color: swiftColor);
-        firstRadioButton.titleLabel?.sizeToFit()
-        scrollView.contentSize.height = 100
+    func createFirstRadioButton() -> DLRadioButton{
+        
+        let frame = CGRect(x: LEADING_SPACE, y: contentHeight + SPACING_BETWEEN_CONTENTS, width: view.frame.width - CONTENT_WIDTH, height: DEFAULT_RADIO_BUTTON_HEIGHT);
+        let firstRadioButton = createRadioButton(frame: frame, title: question.getQuestionAnswers()[0]["a_text"] as! String, id : question.getQuestionAnswers()[0]["a_id"] as! String, color: textColor);
+        
+        contentHeight = contentHeight + SPACING_BETWEEN_CONTENTS + (firstRadioButton.titleLabel?.frame.height)!
+        
         if(question.getQuestionAnswers()[0]["p_filename"] as? String != nil){
             var imageView: UIImageView
-            imageView = UIImageView(frame:CGRect(x:50, y: firstRadioButton.titleLabel!.frame.height + questionImage.frame.height + 10, width:50, height:50))
+            imageView = UIImageView(frame:CGRect(x:40, y: contentHeight + SPACING_BETWEEN_QUESION_AND_IMAGE, width: IMAGE_WIDTH, height: IMAGE_HEIGHT))
             let url = URL(string: "http://mcs.drury.edu/gameofphones/mobilefiles/images/\(question.getQuestionAnswers()[0]["p_filename"]!)")
             let data = try? Data(contentsOf: url!)
             imageView.image = UIImage(data: data!)
             imageView.contentMode = .scaleAspectFit
-            scrollView.contentSize.height = scrollView.contentSize.height + 100
             scrollView.addSubview(imageView)
+            contentHeight = contentHeight + SPACING_BETWEEN_QUESION_AND_IMAGE + SPACING_BETWEEN_CONTENTS + imageView.frame.height
         }
-        //other buttons
+        return firstRadioButton
+    }
+    
+    func createOtherRadioButtons() -> [DLRadioButton]{
         var i = 0
-        var y = Int(questionImage.frame.height) + 100
         var otherButtons : [DLRadioButton] = [];
         for _ in question.getQuestionAnswers(){
             if(i == 0){
                 i += 1
             }
             else{
-                let frame = CGRect(x: 25, y: y, width: Int(questionLabel.frame.width), height: 100);
-                let radioButton = createRadioButton(frame: frame, title: question.getQuestionAnswers()[i]["a_text"] as! String, id: question.getQuestionAnswers()[i]["a_id"] as! String, color: swiftColor);
-                radioButton.titleLabel?.sizeToFit()
-                scrollView.contentSize.height = scrollView.contentSize.height + 100
+                let frame = CGRect(x: LEADING_SPACE, y: contentHeight + SPACING_BETWEEN_CONTENTS, width: view.frame.width - CONTENT_WIDTH, height: DEFAULT_RADIO_BUTTON_HEIGHT);
+                let radioButton = createRadioButton(frame: frame, title: question.getQuestionAnswers()[i]["a_text"] as! String, id: question.getQuestionAnswers()[i]["a_id"] as! String, color: textColor);
+                contentHeight = contentHeight + SPACING_BETWEEN_CONTENTS + (radioButton.titleLabel?.frame.height)!
+                
                 if(question.getQuestionAnswers()[i]["p_filename"] as? String != nil){
                     var imageView: UIImageView
-                    imageView = UIImageView(frame:CGRect(x:50, y: radioButton.titleLabel!.frame.height + questionImage.frame.height + 10, width:50, height:50))
+                    imageView = UIImageView(frame:CGRect(x:40, y: contentHeight + SPACING_BETWEEN_QUESION_AND_IMAGE, width: IMAGE_WIDTH, height: IMAGE_HEIGHT))
                     let url = URL(string: "http://mcs.drury.edu/gameofphones/mobilefiles/images/\(question.getQuestionAnswers()[i]["p_filename"]!)")
                     let data = try? Data(contentsOf: url!)
                     imageView.image = UIImage(data: data!)
                     imageView.contentMode = .scaleAspectFit
-                    scrollView.contentSize.height = scrollView.contentSize.height + 100
                     scrollView.addSubview(imageView)
+                    imageView.layoutIfNeeded()
+                    contentHeight = contentHeight + SPACING_BETWEEN_QUESION_AND_IMAGE + imageView.frame.height
                 }
-                y += 100
                 i += 1
                 otherButtons.append(radioButton)
             }
         }
-        firstRadioButton.otherButtons = otherButtons;
-        return y
+        return otherButtons
     }
     
-    func createSubmitButton(questionImage : UIImageView, questionLabelWidth : CGFloat){
-        let submitButton = UIButton(frame: CGRect(x: Int((view.frame.width - questionLabelWidth) / 2), y: displayRadioButtons(questionImage: questionImage) + 10, width: Int(questionLabelWidth), height: 30))
+    func createQuestionLabel(){
+        questionLabel = UILabel(frame:CGRect(x: LEADING_SPACE, y: 0, width: view.frame.width - CONTENT_WIDTH, height: DEFAULT_LABEL_AND_BUTTON_HEIGHT))
+        questionLabel.numberOfLines = 0
+        questionLabel.lineBreakMode = .byWordWrapping
+        questionLabel.text = question.getQuestionText()
+        questionLabel.textColor = textColor
+        questionLabel.sizeToFit()
+        scrollView.addSubview(questionLabel)
+        contentHeight = questionLabel.frame.size.height
+    }
+    
+    func createSubmitButton(){
+        let submitButton = UIButton(frame: CGRect(x: LEADING_SPACE, y: contentHeight + SPACING_BETWEEN_CONTENTS, width: view.frame.width - CONTENT_WIDTH, height: DEFAULT_LABEL_AND_BUTTON_HEIGHT))
         submitButton.setTitle("Submit", for: .normal)
         submitButton.setTitleColor(view.backgroundColor, for: .normal)
-        submitButton.backgroundColor = radioIndicatorColor
+        submitButton.backgroundColor = themeColor
         submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
         scrollView.addSubview(submitButton)
+        contentHeight = contentHeight + SPACING_BETWEEN_SUBMIT_BUTTON_AND_VIEW + submitButton.frame.height
     }
     
-    func checkForQuestionImage(questionImage: UIImageView){
+    func createQuestionImage(){
         if(question.getQuestionImage() != ""){
-            let url = URL(string: "http://mcs.drury.edu/gameofphones/mobilefiles/images/\(question.getQuestionImage())")
+            let questionImage = UIImageView(frame:CGRect(x:LEADING_SPACE, y: questionLabel.frame.height + SPACING_BETWEEN_QUESION_AND_IMAGE, width: IMAGE_WIDTH, height:IMAGE_HEIGHT))
+            let url = URL(string: questionImageUrl + question.getQuestionImage())
             let data = try? Data(contentsOf: url!)
             questionImage.image = UIImage(data: data!)
             questionImage.contentMode = .scaleAspectFit
             questionLabel.addSubview(questionImage)
-//            let constraintTop = NSLayoutConstraint(item: questionImage, attribute: .bottom, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1, constant: -23)
-            let questionLabelTopConstraint = NSLayoutConstraint(item: questionLabel, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 41)
-            let questionLabelBottomConstraint = NSLayoutConstraint(item: questionLabel, attribute: .bottom, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1, constant: 23)
-            let questionLabelConstraint = NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: questionLabel, attribute: .bottom, multiplier: 1, constant: 23)
-            let questionImageConstraint = NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: questionImage, attribute: .bottom, multiplier: 1, constant: 23)
-            let constraintBottom = NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: bottomLayoutGuide, attribute: .top, multiplier: 1, constant: 0)
-            let constraintLeft = NSLayoutConstraint(item: scrollView, attribute: .leading, relatedBy: .equal, toItem: nil, attribute: .leading, multiplier: 1, constant: 0)
-            let constraintRight = NSLayoutConstraint(item: scrollView, attribute: .trailing, relatedBy: .equal, toItem: nil, attribute: .trailing, multiplier: 1, constant: 0)
-//            if(question.getQuestionImage() == ""){
-                NSLayoutConstraint.activate([questionLabelConstraint, constraintBottom, constraintLeft, constraintRight, questionLabelTopConstraint, questionLabelBottomConstraint])
-//            } else {
-//                NSLayoutConstraint.activate([questionImageConstraint, constraintBottom, constraintLeft, constraintRight])
-//            }
+            contentHeight = contentHeight + SPACING_BETWEEN_QUESION_AND_IMAGE + questionImage.frame.height + SPACING_BETWEEN_QUESION_AND_ANSWERS
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        scrollView.contentSize.height = 0
-        questionLabel.text = question.getQuestionText()
-        let questionLabelWidth = questionLabel.frame.width
-        questionLabel.sizeToFit()
-        let questionImage = UIImageView(frame:CGRect(x:50, y: questionLabel.frame.height, width:50, height:50))
-        checkForQuestionImage(questionImage: questionImage)
-        displayRadioButtons(questionImage: questionImage)
-        createSubmitButton(questionImage: questionImage, questionLabelWidth : questionLabelWidth)
-
+        createQuestionLabel()
+        createQuestionImage()
+        createFirstRadioButton().otherButtons = createOtherRadioButtons()
+        createSubmitButton()
+        scrollView.contentSize.height = contentHeight
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
 }

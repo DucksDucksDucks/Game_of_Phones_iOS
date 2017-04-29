@@ -22,11 +22,13 @@ class TextQuestionViewController: UIViewController {
     
     @IBAction func answerSubmit(_ sender: UIButton) {
         
-        let bodyData = "answer=" + (textAnswer.text!) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId()) + "&teacherID=" + (teacher.getTeacherId())
-        
-        postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
-        
-        self.performSegue(withIdentifier: "submitAnswer", sender: self)
+        if !(textAnswer.text?.trimmingCharacters(in: .whitespaces).isEmpty)! || !((textAnswer.text?.isEmpty)!){
+            let bodyData = "answer=" + (textAnswer.text!) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId()) + "&teacherID=" + (teacher.getTeacherId())
+            
+            postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
+            
+            self.performSegue(withIdentifier: "submitAnswer", sender: self)
+        }
         
     }
     
@@ -46,7 +48,6 @@ class TextQuestionViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
