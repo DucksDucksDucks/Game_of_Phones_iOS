@@ -47,7 +47,6 @@ class TextQuestionViewController: UIViewController {
         for constraint in view.constraints{
             if constraint.identifier == "questionLabelTop"{
                 topConstraint = constraint.constant
-                print(topConstraint)
             } else if constraint.identifier == "questionLabelLeading"{
                 leadingConstraint = constraint.constant
             } else if constraint.identifier == "questionLabelTrailing"{
@@ -55,7 +54,6 @@ class TextQuestionViewController: UIViewController {
             }
         }
         contentHeight = questionLabel.frame.height + topConstraint
-        print(trailingConstraint)
         if(question.getQuestionImage() != ""){
             let questionImage = UIImageView(frame:CGRect(x:0, y: questionLabel.frame.height + SPACING_BETWEEN_QUESION_AND_IMAGE, width: textAnswer.frame.width, height:IMAGE_HEIGHT))
             let url = URL(string: questionImageUrl + question.getQuestionImage())
@@ -83,7 +81,7 @@ class TextQuestionViewController: UIViewController {
         questionLabel.layoutIfNeeded()
         textAnswer.translatesAutoresizingMaskIntoConstraints = true
         textAnswer.frame.origin.y = contentHeight + 33
-        print(contentHeight)
+        textAnswer.becomeFirstResponder()
         
   }
 

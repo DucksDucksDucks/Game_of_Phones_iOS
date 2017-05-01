@@ -23,9 +23,7 @@ class DrawViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        questionLabel.text = question.getQuestionText()
-        questionLabel.text = "hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hi"
-        print(DeviceId.deviceIdForAnswer)
+        questionLabel.text = question.getQuestionText()
     }
 
     override func didReceiveMemoryWarning() {
@@ -129,11 +127,10 @@ class DrawViewController: UIViewController {
         mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
-        
         if let imageData = UIImagePNGRepresentation(mainImageView.image!) {
             let encodedImageData = imageData.base64EncodedString(options: .init(rawValue: 0)).replacingOccurrences(of: "+", with: "%2B", options: .literal, range: nil)
             
-        let imageBodyData = "image=" + (encodedImageData) + "&filename=" + (DeviceId.deviceIdForAnswer) + "image"
+        let imageBodyData = "image=" + (encodedImageData) + "&filename=\(Int(arc4random_uniform(100000) + 1))"
         postData.postData(postString: imageBodyData, urlString: uploadPhotoUrl, teacher: teacher, question: question)
             
         let bodyData = "answer=" + (DeviceId.deviceIdForAnswer) + "image.png" + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId() + "&teacherID=" + (teacher.getTeacherId()))

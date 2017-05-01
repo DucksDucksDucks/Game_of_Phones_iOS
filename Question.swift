@@ -8,20 +8,6 @@
 
 import Foundation
 
-//struct Question {
-//    
-//    public static var questionText: String = ""
-//    
-//    public static var questionId : String = ""
-//    
-//    public static var questionType : String = ""
-//    
-//    public static var questionImage : String = ""
-//    
-//    public static var questionAnswers = [[String:AnyObject]]()
-//
-//}
-
 class Question {
     
     public var questionText : String = ""

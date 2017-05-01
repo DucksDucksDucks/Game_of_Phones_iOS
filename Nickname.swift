@@ -8,14 +8,6 @@
 
 import Foundation
 
-//struct Nickname{
-//    
-//    public static var nickname: String = ""
-//    
-//
-//    
-//}
-
 class Nickname{
     
     public var nickname: String = ""

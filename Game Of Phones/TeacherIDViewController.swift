@@ -30,7 +30,7 @@ class TeacherIDViewController: UIViewController {
     
     @IBAction func submitButton(_ sender: UIButton) {
 
-        if (teacherId.text?.trimmingCharacters(in: .whitespaces).isEmpty)! || (teacherId.text?.isEmpty)!{
+        if (teacherId.text?.trimmingCharacters(in: .whitespaces).isEmpty)! || (teacherId.text?.isEmpty)! || teacherId.text == "0"{
             errorLabel.text = "Please enter a valid Teacher ID."
         } else {
             teacher.setTeacherId(teacherId: teacherId.text!)
@@ -84,6 +84,7 @@ class TeacherIDViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        teacherId.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {

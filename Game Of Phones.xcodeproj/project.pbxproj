@@ -49,8 +49,8 @@
 		51502D851DF528E9001C845A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51502D871DF528E9001C845A /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		51502D8A1DF528E9001C845A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		51502D8C1DF528E9001C845A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		51502D911DF528E9001C845A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51502D8C1DF528E9001C845A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Game Of Phones/Assets.xcassets"; sourceTree = "<group>"; };
+		51502D911DF528E9001C845A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Game Of Phones/Info.plist"; sourceTree = "<group>"; };
 		51502D971DF5290D001C845A /* TeacherIDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeacherIDViewController.swift; sourceTree = "<group>"; };
 		51502D991DF52D0E001C845A /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		5186D5FD1E673A3600418F87 /* Nickname.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nickname.swift; sourceTree = "<group>"; };
@@ -58,9 +58,9 @@
 		5186D6031E675AC500418F87 /* Teacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		5186D6051E67642500418F87 /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		51F57C501E5E2ED5006E138B /* DLRadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DLRadioButton.framework; sourceTree = "<group>"; };
-		51F76A521E5DF73F00DA7A7A /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
-		51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
-		B601B2561E608CE2001F5B90 /* DeviceId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceId.swift; sourceTree = "<group>"; };
+		51F76A521E5DF73F00DA7A7A /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLRadioButton.h; path = "Game Of Phones/DLRadioButton.h"; sourceTree = "<group>"; };
+		51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLRadioButton.m; path = "Game Of Phones/DLRadioButton.m"; sourceTree = "<group>"; };
+		B601B2561E608CE2001F5B90 /* DeviceId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceId.swift; path = "Game Of Phones/DeviceId.swift"; sourceTree = "<group>"; };
 		B65279451E647E730075FDC2 /* TextQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextQuestionViewController.swift; sourceTree = "<group>"; };
 		B6F0D2E01DFA118A00F01E40 /* AnswerSubmittedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerSubmittedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,10 +79,11 @@
 		51502D791DF528E9001C845A = {
 			isa = PBXGroup;
 			children = (
-				5148A8ED1E9E85BD00BBC700 /* graph.png */,
-				5148A8EF1E9E8C1500BBC700 /* Images.xcassets */,
-				5186D5FA1E6737B700418F87 /* Model */,
-				51502D841DF528E9001C845A /* Game Of Phones */,
+				51D2B1A71EB6E31C00102ADA /* Misc */,
+				51D2B1A61EB6E2C800102ADA /* Images */,
+				51D2B1A51EB6E29D00102ADA /* Views */,
+				5186D5FA1E6737B700418F87 /* Models */,
+				51502D841DF528E9001C845A /* Controllers */,
 				51502D831DF528E9001C845A /* Products */,
 				B6C4B4381E5DE8B800C4D97E /* Frameworks */,
 			);
@@ -96,12 +97,9 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		51502D841DF528E9001C845A /* Game Of Phones */ = {
+		51502D841DF528E9001C845A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				51F76A521E5DF73F00DA7A7A /* DLRadioButton.h */,
-				51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */,
-				51502D891DF528E9001C845A /* Main.storyboard */,
 				5148A8EB1E9E823B00BBC700 /* DrawViewController.swift */,
 				51502D851DF528E9001C845A /* AppDelegate.swift */,
 				51502D871DF528E9001C845A /* NicknameViewController.swift */,
@@ -109,22 +107,49 @@
 				51502D991DF52D0E001C845A /* QuestionViewController.swift */,
 				B65279451E647E730075FDC2 /* TextQuestionViewController.swift */,
 				B6F0D2E01DFA118A00F01E40 /* AnswerSubmittedViewController.swift */,
-				51502D8C1DF528E9001C845A /* Assets.xcassets */,
-				51502D911DF528E9001C845A /* Info.plist */,
-				B601B2561E608CE2001F5B90 /* DeviceId.swift */,
 			);
+			name = Controllers;
 			path = "Game Of Phones";
 			sourceTree = "<group>";
 		};
-		5186D5FA1E6737B700418F87 /* Model */ = {
+		5186D5FA1E6737B700418F87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B601B2561E608CE2001F5B90 /* DeviceId.swift */,
 				5186D5FD1E673A3600418F87 /* Nickname.swift */,
 				5186D6011E674F0700418F87 /* Question.swift */,
 				5186D6031E675AC500418F87 /* Teacher.swift */,
 				5186D6051E67642500418F87 /* PostData.swift */,
 			);
-			name = Model;
+			name = Models;
+			sourceTree = "<group>";
+		};
+		51D2B1A51EB6E29D00102ADA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				51502D891DF528E9001C845A /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		51D2B1A61EB6E2C800102ADA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5148A8ED1E9E85BD00BBC700 /* graph.png */,
+				5148A8EF1E9E8C1500BBC700 /* Images.xcassets */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		51D2B1A71EB6E31C00102ADA /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */,
+				51F76A521E5DF73F00DA7A7A /* DLRadioButton.h */,
+				51502D8C1DF528E9001C845A /* Assets.xcassets */,
+				51502D911DF528E9001C845A /* Info.plist */,
+			);
+			name = Misc;
 			sourceTree = "<group>";
 		};
 		B6C4B4381E5DE8B800C4D97E /* Frameworks */ = {
@@ -236,6 +261,7 @@
 				51502D8A1DF528E9001C845A /* Base */,
 			);
 			name = Main.storyboard;
+			path = "Game Of Phones";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "51502D811DF528E9001C845A"
-               BuildableName = "Game Of Phones.app"
+               BuildableName = "eDUcation.app"
                BlueprintName = "Game Of Phones"
                ReferencedContainer = "container:Game Of Phones.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "51502D811DF528E9001C845A"
-            BuildableName = "Game Of Phones.app"
+            BuildableName = "eDUcation.app"
             BlueprintName = "Game Of Phones"
             ReferencedContainer = "container:Game Of Phones.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "51502D811DF528E9001C845A"
-            BuildableName = "Game Of Phones.app"
+            BuildableName = "eDUcation.app"
             BlueprintName = "Game Of Phones"
             ReferencedContainer = "container:Game Of Phones.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "51502D811DF528E9001C845A"
-            BuildableName = "Game Of Phones.app"
+            BuildableName = "eDUcation.app"
             BlueprintName = "Game Of Phones"
             ReferencedContainer = "container:Game Of Phones.xcodeproj">
          </BuildableReference>

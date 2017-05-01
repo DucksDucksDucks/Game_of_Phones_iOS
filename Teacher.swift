@@ -8,12 +8,6 @@
 
 import Foundation
 
-//struct Teacher{
-//    
-//    public static var teacherId: String = ""
-//    
-//}
-
 class Teacher{
     
     public var teacherId : String = ""

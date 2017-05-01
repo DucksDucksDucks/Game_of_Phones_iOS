@@ -17,16 +17,16 @@ class QuestionViewController: UIViewController {
     let textColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1)
     let themeColor = UIColor(red:1, green: 174/255, blue: 40/255, alpha: 1)
     
-    let SPACING_BETWEEN_CONTENTS : CGFloat = 10
+    let SPACING_BETWEEN_CONTENTS : CGFloat = 40
     let SPACING_BETWEEN_QUESION_AND_IMAGE : CGFloat = 15
     let LEADING_SPACE : CGFloat = 20
     let SPACING_BETWEEN_QUESION_AND_ANSWERS : CGFloat = 25
     let CONTENT_WIDTH : CGFloat = 40
-    let SPACING_BETWEEN_SUBMIT_BUTTON_AND_VIEW : CGFloat = 50
+    let SPACING_BETWEEN_SUBMIT_BUTTON_AND_VIEW : CGFloat = 100
     let IMAGE_HEIGHT : CGFloat = 200
     let IMAGE_WIDTH : CGFloat = 300
-    let DEFAULT_RADIO_BUTTON_HEIGHT : CGFloat = 20
-    let DEFAULT_LABEL_AND_BUTTON_HEIGHT : CGFloat = 30
+    let DEFAULT_RADIO_BUTTON_HEIGHT : CGFloat = 40
+    let DEFAULT_LABEL_AND_BUTTON_HEIGHT : CGFloat = 40
     
     @IBOutlet weak var scrollView: UIScrollView!
     var questionLabel : UILabel!
@@ -53,9 +53,10 @@ class QuestionViewController: UIViewController {
     private func createRadioButton(frame : CGRect, title : String, id : String, color : UIColor) -> DLRadioButton {
         
         let radioButton = DLRadioButton(frame: frame);
-        radioButton.titleLabel!.font = UIFont.systemFont(ofSize: 14);
+        radioButton.titleLabel!.font = UIFont.systemFont(ofSize: 18);
         radioButton.setTitle(title, for: UIControlState.normal);
         radioButton.setTitleColor(color, for: UIControlState.normal);
+        radioButton.iconSize = 25
         radioButton.iconColor = textColor;
         radioButton.indicatorColor = themeColor;
         radioButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left;
@@ -90,7 +91,7 @@ class QuestionViewController: UIViewController {
         if(question.getQuestionAnswers()[0]["p_filename"] as? String != nil){
             var imageView: UIImageView
             imageView = UIImageView(frame:CGRect(x:40, y: contentHeight + SPACING_BETWEEN_QUESION_AND_IMAGE, width: view.frame.width - LEADING_SPACE - CONTENT_WIDTH, height: IMAGE_HEIGHT))
-            let url = URL(string: "http://mcs.drury.edu/gameofphones/mobilefiles/images/\(question.getQuestionAnswers()[0]["p_filename"]!)")
+            let url = URL(string: questionImageUrl + (question.getQuestionAnswers()[0]["p_filename"] as! String))
             let data = try? Data(contentsOf: url!)
             imageView.image = UIImage(data: data!)
             imageView.contentMode = .scaleAspectFit
@@ -136,6 +137,7 @@ class QuestionViewController: UIViewController {
         questionLabel.lineBreakMode = .byWordWrapping
         questionLabel.text = question.getQuestionText()
         questionLabel.textColor = textColor
+        questionLabel.font = UIFont.systemFont(ofSize: 22)
         questionLabel.sizeToFit()
         scrollView.addSubview(questionLabel)
         contentHeight = questionLabel.frame.size.height
@@ -145,6 +147,7 @@ class QuestionViewController: UIViewController {
         let submitButton = UIButton(frame: CGRect(x: LEADING_SPACE, y: contentHeight + SPACING_BETWEEN_CONTENTS, width: view.frame.width - CONTENT_WIDTH, height: DEFAULT_LABEL_AND_BUTTON_HEIGHT))
         submitButton.setTitle("Submit", for: .normal)
         submitButton.setTitleColor(view.backgroundColor, for: .normal)
+        submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         submitButton.backgroundColor = themeColor
         submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
         scrollView.addSubview(submitButton)
