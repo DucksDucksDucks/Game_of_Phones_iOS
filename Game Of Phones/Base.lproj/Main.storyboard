@@ -303,11 +303,12 @@
                         <outlet property="errorLabel" destination="CKO-pf-3zQ" id="5Xp-w6-Cbd"/>
                         <segue destination="ePL-9G-Vtl" kind="show" identifier="displayQuestion" id="QfM-jW-OHh"/>
                         <segue destination="0MZ-2R-BOr" kind="show" identifier="displayTextQuestion" id="1X2-QV-3r8"/>
+                        <segue destination="IY4-6N-y4y" kind="show" identifier="displayDrawQuestion" id="BJV-DT-Ggi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JzZ-h6-47o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1377" y="36"/>
+            <point key="canvasLocation" x="1902" y="59"/>
         </scene>
         <!--Draw View Controller-->
         <scene sceneID="j7G-xK-BbZ">
@@ -575,8 +576,9 @@
         <image name="graph.png" width="1432" height="1239"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="BJV-DT-Ggi"/>
         <segue reference="NCV-Dr-M7D"/>
-        <segue reference="VBY-xZ-e61"/>
-        <segue reference="mbS-QM-v3r"/>
+        <segue reference="1X2-QV-3r8"/>
+        <segue reference="QfM-jW-OHh"/>
     </inferredMetricsTieBreakers>
 </document>

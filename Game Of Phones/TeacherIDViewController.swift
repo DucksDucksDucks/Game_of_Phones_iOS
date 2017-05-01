@@ -53,7 +53,7 @@ class TeacherIDViewController: UIViewController {
                 }
                 else if(question.getQuestionType() == "draw"){
                     OperationQueue.main.addOperation {
-                        self.performSegue(withIdentifier: "displayDrawQuestion", sender: self)
+                        self.performSegue(withIdentifier: "displayDrawQuestion", sender: self.question.getQuestionAnswers())
                     }
                 }
                 else {

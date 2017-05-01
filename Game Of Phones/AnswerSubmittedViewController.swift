@@ -46,6 +46,11 @@ class AnswerSubmittedViewController: UIViewController {
                     self.performSegue(withIdentifier: "displayTextQuestion", sender: self.question.getQuestionAnswers())
                 }
             }
+            else if(question.getQuestionType() == "draw"){
+                OperationQueue.main.addOperation {
+                    self.performSegue(withIdentifier: "displayDrawQuestion", sender: self.question.getQuestionAnswers())
+                }
+            }
             else {
                 OperationQueue.main.addOperation {
                     self.performSegue(withIdentifier: "displayQuestion", sender: self.question.getQuestionAnswers())
@@ -63,6 +68,10 @@ class AnswerSubmittedViewController: UIViewController {
             
         }
         else if let destViewController : TextQuestionViewController = segue.destination as? TextQuestionViewController{
+            destViewController.teacher = teacher
+            destViewController.question = question
+        }
+        else if let destViewController : DrawViewController = segue.destination as? DrawViewController{
             destViewController.teacher = teacher
             destViewController.question = question
         }
