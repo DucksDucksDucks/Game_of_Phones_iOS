@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5148A8EC1E9E823B00BBC700 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5148A8EB1E9E823B00BBC700 /* DrawViewController.swift */; };
-		5148A8EE1E9E85BD00BBC700 /* graph.png in Resources */ = {isa = PBXBuildFile; fileRef = 5148A8ED1E9E85BD00BBC700 /* graph.png */; };
 		5148A8F01E9E8C1500BBC700 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5148A8EF1E9E8C1500BBC700 /* Images.xcassets */; };
 		51502D861DF528E9001C845A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51502D851DF528E9001C845A /* AppDelegate.swift */; };
 		51502D881DF528E9001C845A /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51502D871DF528E9001C845A /* NicknameViewController.swift */; };
@@ -24,6 +23,7 @@
 		51F76A541E5DF73F00DA7A7A /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */; };
 		B601B2571E608CE2001F5B90 /* DeviceId.swift in Sources */ = {isa = PBXBuildFile; fileRef = B601B2561E608CE2001F5B90 /* DeviceId.swift */; };
 		B65279461E647E730075FDC2 /* TextQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65279451E647E730075FDC2 /* TextQuestionViewController.swift */; };
+		B65CFFD21EB781740051F586 /* graph.png in Resources */ = {isa = PBXBuildFile; fileRef = B65CFFD11EB781740051F586 /* graph.png */; };
 		B6F0D2E11DFA118A00F01E40 /* AnswerSubmittedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0D2E01DFA118A00F01E40 /* AnswerSubmittedViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +43,6 @@
 
 /* Begin PBXFileReference section */
 		5148A8EB1E9E823B00BBC700 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
-		5148A8ED1E9E85BD00BBC700 /* graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph.png; sourceTree = "<group>"; };
 		5148A8EF1E9E8C1500BBC700 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		51502D821DF528E9001C845A /* eDUcation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eDUcation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51502D851DF528E9001C845A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +61,7 @@
 		51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLRadioButton.m; path = "Game Of Phones/DLRadioButton.m"; sourceTree = "<group>"; };
 		B601B2561E608CE2001F5B90 /* DeviceId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceId.swift; path = "Game Of Phones/DeviceId.swift"; sourceTree = "<group>"; };
 		B65279451E647E730075FDC2 /* TextQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextQuestionViewController.swift; sourceTree = "<group>"; };
+		B65CFFD11EB781740051F586 /* graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph.png; sourceTree = "<group>"; };
 		B6F0D2E01DFA118A00F01E40 /* AnswerSubmittedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerSubmittedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,7 +135,7 @@
 		51D2B1A61EB6E2C800102ADA /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				5148A8ED1E9E85BD00BBC700 /* graph.png */,
+				B65CFFD11EB781740051F586 /* graph.png */,
 				5148A8EF1E9E8C1500BBC700 /* Images.xcassets */,
 			);
 			name = Images;
@@ -224,8 +224,8 @@
 			files = (
 				51502D8D1DF528E9001C845A /* Assets.xcassets in Resources */,
 				5148A8F01E9E8C1500BBC700 /* Images.xcassets in Resources */,
+				B65CFFD21EB781740051F586 /* graph.png in Resources */,
 				51502D8B1DF528E9001C845A /* Main.storyboard in Resources */,
-				5148A8EE1E9E85BD00BBC700 /* graph.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -126,14 +126,15 @@ class DrawViewController: UIViewController {
         tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: view.frame.size.width, height: tempImageView.frame.size.height), blendMode: CGBlendMode.normal, alpha: opacity)
         mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        let randomNumber = Int(arc4random_uniform(100000) + 1)
 
         if let imageData = UIImagePNGRepresentation(mainImageView.image!) {
             let encodedImageData = imageData.base64EncodedString(options: .init(rawValue: 0)).replacingOccurrences(of: "+", with: "%2B", options: .literal, range: nil)
             
-        let imageBodyData = "image=" + (encodedImageData) + "&filename=\(Int(arc4random_uniform(100000) + 1))"
+        let imageBodyData = "image=" + (encodedImageData) + "&filename=\(randomNumber)"
         postData.postData(postString: imageBodyData, urlString: uploadPhotoUrl, teacher: teacher, question: question)
             
-        let bodyData = "answer=" + (DeviceId.deviceIdForAnswer) + "image.png" + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId() + "&teacherID=" + (teacher.getTeacherId()))
+        let bodyData = "answer=\(randomNumber).png" + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId() + "&teacherID=" + (teacher.getTeacherId()))
         postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
         
         self.performSegue(withIdentifier: "submitAnswer", sender: self)
