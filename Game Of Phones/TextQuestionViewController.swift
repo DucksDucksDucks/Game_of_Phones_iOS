@@ -11,20 +11,13 @@ import UIKit
 class TextQuestionViewController: UIViewController {
     
     var postData = PostData()
-    var sendAnswerUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/sendAnswer.php"
-    var questionImageUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/images/"
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var textAnswer: UITextField!
+
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var teacher : Teacher!
     var question : Question!
-    let SPACING_BETWEEN_QUESION_AND_IMAGE : CGFloat = 15
-    let SPACING_BETWEEN_QUESION_AND_ANSWERS : CGFloat = 25
-    let LEADING_SPACE : CGFloat = 20
-    let IMAGE_HEIGHT : CGFloat = 190
-    let IMAGE_WIDTH : CGFloat = 300
-    
-    var questionText: String = ""
+    var textAnswer : UITextField!
+    var questionLabel : UILabel!
     var contentHeight : CGFloat!
     
     @IBAction func answerSubmit(_ sender: UIButton) {
@@ -32,39 +25,70 @@ class TextQuestionViewController: UIViewController {
         if !(textAnswer.text?.trimmingCharacters(in: .whitespaces).isEmpty)! || !((textAnswer.text?.isEmpty)!){
             let bodyData = "answer=" + (textAnswer.text!) + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId()) + "&teacherID=" + (teacher.getTeacherId())
             
-            postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
+            postData.postData(postString: bodyData, urlString: DataSource.sendAnswerUrl, teacher: teacher, question: question)
             
             self.performSegue(withIdentifier: "submitAnswer", sender: self)
         }
         
     }
+
+    func createQuestionLabel(){
+        questionLabel = UILabel(frame:CGRect(x: Layout.LEADING_SPACE, y: 0, width: view.frame.width - Layout.CONTENT_WIDTH, height: Layout.DEFAULT_LABEL_AND_BUTTON_HEIGHT));
+        questionLabel.numberOfLines = 0
+        questionLabel.lineBreakMode = .byWordWrapping
+        questionLabel.text = question.getQuestionText()
+        questionLabel.textColor = ThemeColors.textColor
+        questionLabel.font = UIFont.systemFont(ofSize: 22)
+        scrollView.addSubview(questionLabel)
+        questionLabel.sizeToFit()
+        contentHeight = questionLabel.frame.size.height
+    }
     
     func createQuestionImage(){
-
-        var topConstraint : CGFloat = 0.0
-        var leadingConstraint : CGFloat = 0.0
-        var trailingConstraint : CGFloat = 0.0
-        for constraint in view.constraints{
-            if constraint.identifier == "questionLabelTop"{
-                topConstraint = constraint.constant
-            } else if constraint.identifier == "questionLabelLeading"{
-                leadingConstraint = constraint.constant
-            } else if constraint.identifier == "questionLabelTrailing"{
-                trailingConstraint = constraint.constant
-            }
-        }
-        contentHeight = questionLabel.frame.height + topConstraint
         if(question.getQuestionImage() != ""){
-            let questionImage = UIImageView(frame:CGRect(x:0, y: questionLabel.frame.height + SPACING_BETWEEN_QUESION_AND_IMAGE, width: textAnswer.frame.width, height:IMAGE_HEIGHT))
-            let url = URL(string: questionImageUrl + question.getQuestionImage())
+            let questionImage = UIImageView(frame:CGRect(x:0, y: questionLabel.frame.height + Layout.SPACING_BETWEEN_QUESION_AND_IMAGE, width: view.frame.width - Layout.CONTENT_WIDTH, height: Layout.IMAGE_HEIGHT))
+            let url = URL(string: DataSource.questionImageUrl + question.getQuestionImage())
             let data = try? Data(contentsOf: url!)
             questionImage.image = UIImage(data: data!)
             questionImage.contentMode = .scaleAspectFit
             questionLabel.addSubview(questionImage)
             questionImage.layoutIfNeeded()
-            contentHeight = contentHeight + questionImage.frame.height + SPACING_BETWEEN_QUESION_AND_IMAGE
+            contentHeight = contentHeight + questionImage.frame.height + Layout.SPACING_BETWEEN_QUESION_AND_IMAGE
         }
     }
+    
+    func createTextAnswer(){
+        textAnswer = UITextField(frame: CGRect(x: Layout.LEADING_SPACE, y: contentHeight + Layout.SPACING_BETWEEN_QUESION_AND_ANSWERS, width: view.frame.width - Layout.CONTENT_WIDTH, height: 30))
+        textAnswer.backgroundColor = UIColor.white
+        textAnswer.borderStyle = .roundedRect
+        textAnswer.font = UIFont.systemFont(ofSize: 17)
+        textAnswer.keyboardAppearance = UIKeyboardAppearance.dark
+        scrollView.addSubview(textAnswer)
+        contentHeight = contentHeight + Layout.SPACING_BETWEEN_QUESION_AND_ANSWERS + textAnswer.frame.height
+    }
+    
+    func createSubmitButton(){
+        let submitButton = UIButton(frame: CGRect(x: Layout.LEADING_SPACE, y: contentHeight + Layout.SPACING_BETWEEN_QUESION_AND_ANSWERS, width: view.frame.width - Layout.CONTENT_WIDTH, height: Layout.DEFAULT_LABEL_AND_BUTTON_HEIGHT))
+        submitButton.setTitle("Submit", for: .normal)
+        submitButton.setTitleColor(view.backgroundColor, for: .normal)
+        submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        submitButton.backgroundColor = ThemeColors.themeColor
+        submitButton.addTarget(self, action: #selector(answerSubmit), for: .touchUpInside)
+        scrollView.addSubview(submitButton)
+        contentHeight = contentHeight + Layout.SPACING_BETWEEN_CONTENTS + submitButton.frame.height
+    }
+    
+    func keyboardWillShowForResizing(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let window = self.view.window?.frame {
+            self.view.frame = CGRect(x: self.view.frame.origin.x,
+                                     y: self.view.frame.origin.y,
+                                     width: self.view.frame.width,
+                                     height: window.origin.y + window.height - keyboardSize.height)
+        }
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destViewController : AnswerSubmittedViewController = segue.destination as? AnswerSubmittedViewController{
             destViewController.teacher = teacher
@@ -75,13 +99,18 @@ class TextQuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionLabel.text = question.getQuestionText()
-        questionLabel.sizeToFit()
+        createQuestionLabel()
         createQuestionImage()
         questionLabel.layoutIfNeeded()
-        textAnswer.translatesAutoresizingMaskIntoConstraints = true
-        textAnswer.frame.origin.y = contentHeight + 33
+        createTextAnswer()
         textAnswer.becomeFirstResponder()
+        createSubmitButton()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(TextQuestionViewController.keyboardWillShowForResizing),
+                                               name: Notification.Name.UIKeyboardWillShow,
+                                               object: nil)
+        
+        scrollView.contentSize.height = contentHeight
         
   }
 

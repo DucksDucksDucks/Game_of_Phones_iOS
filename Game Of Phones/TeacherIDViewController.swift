@@ -17,9 +17,6 @@ class TeacherIDViewController: UIViewController {
     let question = Question()
     let postData = PostData()
     var nickname : Nickname!
-    let teacherIdUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/isTeacherIDSet.php"
-    let questionInfoUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/getQuestion.php"
-    let questionAnswersUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/getQuestionAnswers.php"
     
     var questionInfoDict = [String:String]()
     var questionAnswerDict = [String:String]()
@@ -35,16 +32,16 @@ class TeacherIDViewController: UIViewController {
         } else {
             teacher.setTeacherId(teacherId: teacherId.text!)
             
-            postData.postData(postString: "deviceID=\(teacher.getTeacherId())", urlString : teacherIdUrl, teacher: teacher, question: question)
+            postData.postData(postString: "deviceID=\(teacher.getTeacherId())", urlString : DataSource.teacherIdUrl, teacher: teacher, question: question)
             
             if(teacher.getTeacherId() == "Teacher ID not found"){
                 errorLabel.text = "Please enter a valid Teacher ID."
             } else {
             
-                postData.postData(postString: "deviceID=\(teacher.getTeacherId())", urlString : questionInfoUrl, teacher: teacher, question: question)
+                postData.postData(postString: "deviceID=\(teacher.getTeacherId())", urlString : DataSource.questionInfoUrl, teacher: teacher, question: question)
 
                 
-                postData.postData(postString: "questionID=\(question.getQuestionId())", urlString: questionAnswersUrl, teacher: teacher, question: question)
+                postData.postData(postString: "questionID=\(question.getQuestionId())", urlString: DataSource.questionAnswersUrl, teacher: teacher, question: question)
 
                 if(question.getQuestionType() == "sa"){
                     OperationQueue.main.addOperation {

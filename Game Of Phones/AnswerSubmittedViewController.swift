@@ -14,19 +14,7 @@ class AnswerSubmittedViewController: UIViewController {
     var question : Question!
     var teacher : Teacher!
     
-    let teacherIdUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/isTeacherIDSet.php"
-    let questionInfoUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/getQuestion.php"
-    let questionAnswersUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/getQuestionAnswers.php"
-    
     @IBOutlet weak var errorLabel: UILabel!
-    
-    func activityIndicatorStart(){
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-    }
     
     @IBAction func newQuestion(_ sender: UIButton) {
         
@@ -34,11 +22,11 @@ class AnswerSubmittedViewController: UIViewController {
         
         question = Question()
         
-        postData.postData(postString: "deviceID=\(teacher.getTeacherId())", urlString : teacherIdUrl, teacher: teacher, question: question)
+        postData.postData(postString: "deviceID=\(teacher.getTeacherId())", urlString : DataSource.teacherIdUrl, teacher: teacher, question: question)
         
-        postData.postData(postString: "deviceID=\(teacher.getTeacherId())", urlString : questionInfoUrl, teacher: teacher, question: question)
+        postData.postData(postString: "deviceID=\(teacher.getTeacherId())", urlString : DataSource.questionInfoUrl, teacher: teacher, question: question)
         
-        postData.postData(postString: "questionID=\(question.getQuestionId())", urlString: questionAnswersUrl, teacher: teacher, question: question)
+        postData.postData(postString: "questionID=\(question.getQuestionId())", urlString: DataSource.questionAnswersUrl, teacher: teacher, question: question)
         
         if(questionId != question.getQuestionId()){
             if(question.getQuestionType() == "sa"){

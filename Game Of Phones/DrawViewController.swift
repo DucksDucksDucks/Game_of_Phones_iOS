@@ -17,8 +17,6 @@ class DrawViewController: UIViewController {
     var postData = PostData()
     var question : Question!
     var teacher : Teacher!
-    var sendAnswerUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/sendAnswer.php"
-    var uploadPhotoUrl = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/uploadphoto.php"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,10 +130,10 @@ class DrawViewController: UIViewController {
             let encodedImageData = imageData.base64EncodedString(options: .init(rawValue: 0)).replacingOccurrences(of: "+", with: "%2B", options: .literal, range: nil)
             
         let imageBodyData = "image=" + (encodedImageData) + "&filename=\(randomNumber)"
-        postData.postData(postString: imageBodyData, urlString: uploadPhotoUrl, teacher: teacher, question: question)
+        postData.postData(postString: imageBodyData, urlString: DataSource.uploadPhotoUrl, teacher: teacher, question: question)
             
         let bodyData = "answer=\(randomNumber).png" + "&deviceID=" + (DeviceId.deviceIdForAnswer) + "&currentQID=" + (question.getQuestionId() + "&teacherID=" + (teacher.getTeacherId()))
-        postData.postData(postString: bodyData, urlString: sendAnswerUrl, teacher: teacher, question: question)
+        postData.postData(postString: bodyData, urlString: DataSource.sendAnswerUrl, teacher: teacher, question: question)
         
         self.performSegue(withIdentifier: "submitAnswer", sender: self)
         }

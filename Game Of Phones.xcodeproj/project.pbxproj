@@ -20,6 +20,9 @@
 		5186D6041E675AC500418F87 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186D6031E675AC500418F87 /* Teacher.swift */; };
 		5186D6061E67642500418F87 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186D6051E67642500418F87 /* PostData.swift */; };
 		51F57C531E5E330F006E138B /* DLRadioButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51F57C501E5E2ED5006E138B /* DLRadioButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		51F7600D1EBD339900A14CCF /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F7600C1EBD339900A14CCF /* Layout.swift */; };
+		51F7600F1EBD33EC00A14CCF /* ThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F7600E1EBD33EC00A14CCF /* ThemeColors.swift */; };
+		51F760111EBD36C600A14CCF /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F760101EBD36C600A14CCF /* DataSource.swift */; };
 		51F76A541E5DF73F00DA7A7A /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */; };
 		B601B2571E608CE2001F5B90 /* DeviceId.swift in Sources */ = {isa = PBXBuildFile; fileRef = B601B2561E608CE2001F5B90 /* DeviceId.swift */; };
 		B65279461E647E730075FDC2 /* TextQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65279451E647E730075FDC2 /* TextQuestionViewController.swift */; };
@@ -57,6 +60,9 @@
 		5186D6031E675AC500418F87 /* Teacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		5186D6051E67642500418F87 /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		51F57C501E5E2ED5006E138B /* DLRadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DLRadioButton.framework; sourceTree = "<group>"; };
+		51F7600C1EBD339900A14CCF /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		51F7600E1EBD33EC00A14CCF /* ThemeColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColors.swift; sourceTree = "<group>"; };
+		51F760101EBD36C600A14CCF /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		51F76A521E5DF73F00DA7A7A /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLRadioButton.h; path = "Game Of Phones/DLRadioButton.h"; sourceTree = "<group>"; };
 		51F76A531E5DF73F00DA7A7A /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLRadioButton.m; path = "Game Of Phones/DLRadioButton.m"; sourceTree = "<group>"; };
 		B601B2561E608CE2001F5B90 /* DeviceId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceId.swift; path = "Game Of Phones/DeviceId.swift"; sourceTree = "<group>"; };
@@ -81,9 +87,9 @@
 			children = (
 				51D2B1A71EB6E31C00102ADA /* Misc */,
 				51D2B1A61EB6E2C800102ADA /* Images */,
-				51D2B1A51EB6E29D00102ADA /* Views */,
-				5186D5FA1E6737B700418F87 /* Models */,
-				51502D841DF528E9001C845A /* Controllers */,
+				51D2B1A51EB6E29D00102ADA /* View */,
+				5186D5FA1E6737B700418F87 /* Model */,
+				51502D841DF528E9001C845A /* Controller */,
 				51502D831DF528E9001C845A /* Products */,
 				B6C4B4381E5DE8B800C4D97E /* Frameworks */,
 			);
@@ -97,7 +103,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		51502D841DF528E9001C845A /* Controllers */ = {
+		51502D841DF528E9001C845A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				5148A8EB1E9E823B00BBC700 /* DrawViewController.swift */,
@@ -108,11 +114,11 @@
 				B65279451E647E730075FDC2 /* TextQuestionViewController.swift */,
 				B6F0D2E01DFA118A00F01E40 /* AnswerSubmittedViewController.swift */,
 			);
-			name = Controllers;
+			name = Controller;
 			path = "Game Of Phones";
 			sourceTree = "<group>";
 		};
-		5186D5FA1E6737B700418F87 /* Models */ = {
+		5186D5FA1E6737B700418F87 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				B601B2561E608CE2001F5B90 /* DeviceId.swift */,
@@ -120,16 +126,19 @@
 				5186D6011E674F0700418F87 /* Question.swift */,
 				5186D6031E675AC500418F87 /* Teacher.swift */,
 				5186D6051E67642500418F87 /* PostData.swift */,
+				51F7600C1EBD339900A14CCF /* Layout.swift */,
+				51F7600E1EBD33EC00A14CCF /* ThemeColors.swift */,
+				51F760101EBD36C600A14CCF /* DataSource.swift */,
 			);
-			name = Models;
+			name = Model;
 			sourceTree = "<group>";
 		};
-		51D2B1A51EB6E29D00102ADA /* Views */ = {
+		51D2B1A51EB6E29D00102ADA /* View */ = {
 			isa = PBXGroup;
 			children = (
 				51502D891DF528E9001C845A /* Main.storyboard */,
 			);
-			name = Views;
+			name = View;
 			sourceTree = "<group>";
 		};
 		51D2B1A61EB6E2C800102ADA /* Images */ = {
@@ -242,11 +251,14 @@
 				51F76A541E5DF73F00DA7A7A /* DLRadioButton.m in Sources */,
 				5148A8EC1E9E823B00BBC700 /* DrawViewController.swift in Sources */,
 				51502D881DF528E9001C845A /* NicknameViewController.swift in Sources */,
+				51F760111EBD36C600A14CCF /* DataSource.swift in Sources */,
 				51502D9A1DF52D0E001C845A /* QuestionViewController.swift in Sources */,
 				B601B2571E608CE2001F5B90 /* DeviceId.swift in Sources */,
+				51F7600F1EBD33EC00A14CCF /* ThemeColors.swift in Sources */,
 				51502D861DF528E9001C845A /* AppDelegate.swift in Sources */,
 				B65279461E647E730075FDC2 /* TextQuestionViewController.swift in Sources */,
 				5186D6021E674F0700418F87 /* Question.swift in Sources */,
+				51F7600D1EBD339900A14CCF /* Layout.swift in Sources */,
 				B6F0D2E11DFA118A00F01E40 /* AnswerSubmittedViewController.swift in Sources */,
 				5186D6041E675AC500418F87 /* Teacher.swift in Sources */,
 			);
@@ -376,6 +388,7 @@
 				PRODUCT_NAME = eDUcation;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -394,6 +407,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.treehouse.Game-Of-Phones";
 				PRODUCT_NAME = eDUcation;
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

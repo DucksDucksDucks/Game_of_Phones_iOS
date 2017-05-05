@@ -13,7 +13,7 @@ class NicknameViewController: UIViewController {
     let nickname = Nickname()
     let teacher = Teacher()
     let question = Question()
-    let urlString = "http://mcs.drury.edu/gameofphones/mobilefiles/webservice/createDeviceID.php"
+
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
@@ -24,7 +24,7 @@ class NicknameViewController: UIViewController {
         } else {
             nickname.setNickname(nickname: nameField.text!)
             let postNicknameString = "nickname=\(nickname.getNickname())"
-            postData.postData(postString: postNicknameString, urlString: urlString, teacher: teacher, question: question)
+            postData.postData(postString: postNicknameString, urlString: DataSource.createDeviceIdUrl, teacher: teacher, question: question)
             OperationQueue.main.addOperation {
                 self.performSegue(withIdentifier: "setNickname", sender: self)
             }
