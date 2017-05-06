@@ -33,7 +33,7 @@ class TextQuestionViewController: UIViewController {
     }
 
     func createQuestionLabel(){
-        questionLabel = UILabel(frame:CGRect(x: Layout.LEADING_SPACE, y: 0, width: view.frame.width - Layout.CONTENT_WIDTH, height: Layout.DEFAULT_LABEL_AND_BUTTON_HEIGHT));
+        questionLabel = UILabel(frame:CGRect(x: Layout.LEADING_SPACE, y: CGFloat(Layout.SPACING_BETWEEN_TOP_AND_QUESTION_LABEL), width: view.frame.width - Layout.CONTENT_WIDTH, height: Layout.DEFAULT_LABEL_AND_BUTTON_HEIGHT));
         questionLabel.numberOfLines = 0
         questionLabel.lineBreakMode = .byWordWrapping
         questionLabel.text = question.getQuestionText()
@@ -41,7 +41,7 @@ class TextQuestionViewController: UIViewController {
         questionLabel.font = UIFont.systemFont(ofSize: 22)
         scrollView.addSubview(questionLabel)
         questionLabel.sizeToFit()
-        contentHeight = questionLabel.frame.size.height
+        contentHeight = questionLabel.frame.size.height + CGFloat(Layout.SPACING_BETWEEN_TOP_AND_QUESTION_LABEL)
     }
     
     func createQuestionImage(){
@@ -63,6 +63,7 @@ class TextQuestionViewController: UIViewController {
         textAnswer.borderStyle = .roundedRect
         textAnswer.font = UIFont.systemFont(ofSize: 17)
         textAnswer.keyboardAppearance = UIKeyboardAppearance.dark
+        textAnswer.placeholder = "Please enter your answer..."
         scrollView.addSubview(textAnswer)
         contentHeight = contentHeight + Layout.SPACING_BETWEEN_QUESION_AND_ANSWERS + textAnswer.frame.height
     }

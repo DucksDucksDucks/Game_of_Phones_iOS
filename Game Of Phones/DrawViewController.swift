@@ -51,11 +51,11 @@ class DrawViewController: UIViewController {
         ]
     
     @IBAction func reset(_ sender: Any) {
-        mainImageView.image = UIImage(named: "graph.png")
+        mainImageView.image = UIImage(named: "graph1.png")
         tempImageView.image = nil
     }
     @IBAction func erase(_ sender: AnyObject) {
-        mainImageView.image = UIImage(named: "graph.png")
+        mainImageView.image = UIImage(named: "graph1.png")
         tempImageView.image = nil
     }
     
@@ -120,12 +120,13 @@ class DrawViewController: UIViewController {
     
     @IBAction func submit(_ sender: Any) {
         UIGraphicsBeginImageContext(mainImageView.frame.size)
-        mainImageView.image?.draw(in: CGRect(x: 0, y: 0, width: view.frame.size.width, height: tempImageView.frame.size.height), blendMode: CGBlendMode.normal, alpha: 1.0)
-        tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: view.frame.size.width, height: tempImageView.frame.size.height), blendMode: CGBlendMode.normal, alpha: opacity)
+        mainImageView.image?.draw(in: CGRect(x: 0, y: 0, width: view.frame.size.width - 24, height: tempImageView.frame.size.height), blendMode: CGBlendMode.normal, alpha: 1.0)
+        tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: view.frame.size.width - 24, height: tempImageView.frame.size.height), blendMode: CGBlendMode.normal, alpha: opacity)
         mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         let randomNumber = Int(arc4random_uniform(100000) + 1)
-
+        
+        print(randomNumber)
         if let imageData = UIImagePNGRepresentation(mainImageView.image!) {
             let encodedImageData = imageData.base64EncodedString(options: .init(rawValue: 0)).replacingOccurrences(of: "+", with: "%2B", options: .literal, range: nil)
             
